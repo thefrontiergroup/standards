@@ -73,7 +73,7 @@
 
     `{` and `}` deserve a bit of clarification, since they are used
     for block and hash literals, as well as embedded expressions in
-    strings. For hash literals two styles are considered acceptable.
+    strings.
 
     ```Ruby
     # bad
@@ -82,25 +82,31 @@
     # good - no space after { and before }
     {one: 1, two: 2}
     ```
-    The second variant has
-    the advantage of adding visual difference between block and hash
-    literals.
-
-    As far as embedded expressions go, there are also two acceptable
-    options:
+    The second variant has the advantage of adding visual difference
+    between block and hash literals.
+    
+    When embeding string literals. Add whitespace around the 
+    expression. It adds visual contrast to the surrounding string 
+    and syntax. Secondly interpolaltion values should be kept
+    simple.
 
     ```Ruby
-    # good - no spaces
+    # bad
     "string#{expr}"
 
-    # ok - arguably more readable
+    # good
     "string#{ expr }"
+
+    
+    # bad
+    "string#{ x > 5 || do_the_thing && do_the_other_thing }"
+
+    # good
+    x_over_threshold = x > 5
+    criticle_mass_reached = x_over_threshold || do_the_thing && do_the_other_thing
+    "string#{ criticle_mass_reached }"
     ```
 
-    The first style is extremely more popular and you're generally
-    advised to stick with it. The second, on the other hand, is
-    (arguably) a bit more readable. As with hashes - pick one style
-    and apply it consistently.
 
 * No spaces after `(`, `[` or before `]`, `)`.
 
