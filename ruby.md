@@ -307,21 +307,15 @@
       do_something
     end
 
-    # control flow
-    document.saved? or document.save!
-
     # good
     # boolean expression
     if some_condition && some_other_condition
       do_something
     end
-
-    # control flow
-    document.saved? || document.save!
     ```
 
 * Favor modifier `if/unless` usage when you have a single-line
-  body. Another good alternative is the usage of control flow `&&/||`.
+  body.
 
     ```Ruby
     # bad
@@ -331,13 +325,9 @@
 
     # good
     do_something if some_condition
-
-    # another good option
-    some_condition && do_something
     ```
 
-* Favor `unless` over `if` for negative conditions (or control
-  flow `||`).
+* Favor `unless` over `if` for negative conditions.
 
     ```Ruby
     # bad
@@ -349,8 +339,6 @@
     # good
     do_something unless some_condition
 
-    # another good option
-    some_condition || do_something
     ```
 
 * Never use `unless` with `else`. Rewrite these with the positive case first.
@@ -369,6 +357,20 @@
     else
       puts 'failure'
     end
+    ```
+
+* Don't use boolean operators for controll flow unless the methods are side
+ effect free.
+
+ ```Ruby
+    # bad
+    payment_due? && process_pament!
+
+    # good
+    process_pament! if payment_due?
+    
+    #ok
+    payment_due ||= calculate_payment_due
     ```
 
 * Omit parentheses around parameters for methods that are part of an
