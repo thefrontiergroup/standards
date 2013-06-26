@@ -10,14 +10,17 @@ At The Frontier Group we use Sass, so the style guide will focus primarily on th
 * Use two **spaces** per indentation level. No hard tabs.
 * Put spaces after `:` in property declarations.
 * Use hex color codes, shortening to the shorthand form where possible:
+
   ```sass
   body
     color: rgb(0,0,0) // bad
     color: #001122 // bad
     color: #012 // good
   ```
+
 * Leverage [Sass’ color functions](http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html) to make your life easier, for example `rgba()` can take hex values; `rgba(#666, 0.5)` will result in `rgba(102, 102, 102, 0.5)`
 * Don't use the Property Syntax (`:property_syntax`)
+
   ```sass
   // good
   #main
