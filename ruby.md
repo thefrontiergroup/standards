@@ -31,28 +31,26 @@
     end
     ```
 
-* Don't use `;` to separate statements and expressions. As a
-  corollary - use one expression per line.
+* Don't use `;` to separate statements and expressions. Trailing semicolons
+  are also not to be used.
 
     ```Ruby
     # bad
-    puts 'foobar'; # superfluous semicolon
+    puts 'foobar'; # trailing semicolon
 
-    puts 'foo'; puts 'bar' # two expression on the same line
+    # bad
+    puts 'foo'; puts 'bar' # two expression
 
     # good
-    puts 'foobar'
-
     puts 'foo'
     puts 'bar'
 
     puts 'foo', 'bar' # this applies to puts in particular
     ```
 
-* Use spaces around operators, after commas, colons and semicolons, around `{`
-  and before `}`. Whitespace might be (mostly) irrelevant to the Ruby
-  interpreter, but its proper use is the key to writing easily
-  readable code.
+* Use spaces around operators, after commas, colons and semicolons.
+  Whitespace might often be semantically irrelevant, but its proper
+  use is the key to writing readable code.
 
     ```Ruby
     sum = 1 + 2
@@ -61,29 +59,32 @@
     [1, 2, 3].each { |e| puts e }
     ```
 
-    The only exception, regarding operators, is the exponent operator:
+    The use of spaces around `{` and `}` needs to be carefuly specified,
+    as they are used for block and hash literals, as well as string interpolation.
 
-    ```Ruby
-    # bad
-    e = M * c ** 2
-
-    # good
-    e = M * c**2
-    ```
-
-    `{` and `}` deserve a bit of clarification, since they are used
-    for block and hash literals, as well as embedded expressions in
-    strings.
+    In hash literals, there are no spaces after `{` or before `}`.
 
     ```Ruby
     # bad
     { one: 1, two: 2 }
 
-    # good - no space after { and before }
+    # good
     {one: 1, two: 2}
     ```
-    The second variant has the advantage of adding visual difference
-    between block and hash literals.
+
+    Single line blocks using braces should include a space around the expression, but
+    not a space before the definition of (any) arguments.
+
+    ```
+    # bad
+    x = lambda {|a|puts a}
+    x = lambda { |a| puts a }
+
+    # good
+    x = lambda {|a| puts a }
+    ```
+
+    These syntaxes have the advantage of differentiating between hashes and blocks.
     
     When embeding string literals. Add whitespace around the 
     expression. It adds visual contrast to the surrounding string 
@@ -115,9 +116,9 @@
     [1, 2, 3].length
     ```
 
-* Indent `when` as deep as `case`. I know that many would disagree
-  with this one, but it's the style established in both "The Ruby
-  Programming Language" and "Programming Ruby".
+* Indent `when` as deep as the line containing `case`. I know that
+  many would disagree with this one, but it's the style established
+  in both "The Ruby Programming Language" and "Programming Ruby".
 
     ```Ruby
     case
@@ -132,17 +133,18 @@
     end
 
     kind = case year
-           when 1850..1889 then 'Blues'
-           when 1890..1909 then 'Ragtime'
-           when 1910..1929 then 'New Orleans Jazz'
-           when 1930..1939 then 'Swing'
-           when 1940..1950 then 'Bebop'
-           else 'Jazz'
-           end
+    when 1850..1889 then 'Blues'
+    when 1890..1909 then 'Ragtime'
+    when 1910..1929 then 'New Orleans Jazz'
+    when 1930..1939 then 'Swing'
+    when 1940..1950 then 'Bebop'
+    else 'Jazz'
+    end
     ```
 
 * Use empty lines between `def`s and to break up a method into logical
-  paragraphs.
+  paragraphs. Do not include empty lines before the first expression in a
+  method/block, or after the last expression.
 
     ```Ruby
     def some_method
@@ -158,15 +160,15 @@
     end
     ```
 
-* Don't use spaces around the `=` operator when assigning default values to method parameters:
+* Use spaces around the `=` operator when assigning default values to method parameters:
 
     ```Ruby
-    # good
+    # bad
     def some_method(arg1=:default, arg2=nil, arg3=[])
       # do something...
     end
 
-    # bad
+    # good
     def some_method(arg1 = :default, arg2 = nil, arg3 = [])
       # do something...
     end
@@ -199,6 +201,7 @@
     ```
 
 * Limit lines to 80 characters.
+
 * Avoid trailing whitespace.
 
 ## Syntax
@@ -228,11 +231,7 @@
      end
      ```
 
-* Never use `for`, unless you know exactly why. Most of the time iterators
-  should be used instead. `for` is implemented in terms of `each` (so
-  you're adding a level of indirection), but with a twist - `for`
-  doesn't introduce a new scope (unlike `each`) and variables defined
-  in its block will be visible outside it.
+* Never use `for`, use `each` instead.
 
     ```Ruby
     arr = [1, 2, 3]
@@ -246,7 +245,7 @@
     arr.each { |elem| puts elem }
     ```
 
-* Never use `then` for multi-line `if/unless`.
+* Never use `then`.
 
     ```Ruby
     # bad
@@ -260,8 +259,8 @@
     end
     ```
 
-* Favor the ternary operator(`?:`) over `if/then/else/end` constructs.
-  It's more common and obviously more concise.
+* Never use single-line `if/then/else/end` constructs.
+  Always use the terniary operator.
 
     ```Ruby
     # bad
@@ -411,7 +410,7 @@
     'test'.upcase
     ```
 
-* Prefer `{...}` over `do...end` for single-line blocks.  Avoid using
+* Never use `do...end` for single-line blocks.  Avoid using
   `{...}` for multi-line blocks (multiline chaining is always
   ugly). Always use `do...end` for "control flow" and "method
   definitions" (e.g. in Rakefiles and certain DSLs).  Avoid `do...end`
@@ -437,11 +436,7 @@
     names.select { |name| name.start_with?('S') }.map { |name| name.upcase }
     ```
 
-    Some will argue that multiline chaining would look OK with the use of {...}, but they should
-    ask themselves - is this code really readable and can the blocks' contents be extracted into
-    nifty methods?
-
-* Avoid `return` where not required for flow of control.
+* Avoid `return` where already implicit.
 
     ```Ruby
     # bad
