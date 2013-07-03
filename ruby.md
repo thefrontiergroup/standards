@@ -86,26 +86,26 @@
 
     These syntaxes have the advantage of differentiating between hashes and blocks.
     
-    When embeding string literals. Add whitespace around the 
+    When embeding string literals. Not not add whitespace around the 
     expression. It adds visual contrast to the surrounding string 
     and syntax. Secondly interpolaltion values should be kept
     simple.
 
     ```Ruby
-    # bad
+    # good
     "string#{expr}"
 
-    # good
+    # bad
     "string#{ expr }"
 
     
     # bad
-    "string#{ x > 5 || do_the_thing && do_the_other_thing }"
+    "string#{x > 5 || do_the_thing && do_the_other_thing}"
 
     # good
     x_over_threshold = x > 5
     criticle_mass_reached = x_over_threshold || do_the_thing && do_the_other_thing
-    "string#{ criticle_mass_reached }"
+    "string#{criticle_mass_reached}"
     ```
 
 
@@ -358,12 +358,12 @@
     end
     ```
 
-* Don't use boolean operators for controll flow unless the methods are side
+* Don't use boolean operators for control flow unless the methods are side
  effect free.
 
  ```Ruby
     # bad
-    payment_due? && process_pament!
+    payment_due? && process_payment!
 
     # good
     process_pament! if payment_due?
