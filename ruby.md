@@ -73,36 +73,40 @@
 
     `{` and `}` deserve a bit of clarification, since they are used
     for block and hash literals, as well as embedded expressions in
-    strings. For hash literals two styles are considered acceptable.
+    strings.
 
     ```Ruby
-    # good - space after { and before }
+    # bad
     { one: 1, two: 2 }
 
     # good - no space after { and before }
     {one: 1, two: 2}
     ```
-
-    The first variant is slightly more readable (and arguably more
-    popular in the Ruby community in general). The second variant has
-    the advantage of adding visual difference between block and hash
-    literals. Whichever one you pick - apply it consistently.
-
-    As far as embedded expressions go, there are also two acceptable
-    options:
+    The second variant has the advantage of adding visual difference
+    between block and hash literals.
+    
+    When embeding string literals. Not not add whitespace around the 
+    expression. It adds visual contrast to the surrounding string 
+    and syntax. Secondly interpolaltion values should be kept
+    simple.
 
     ```Ruby
-    # good - no spaces
+    # good
     "string#{expr}"
 
-    # ok - arguably more readable
+    # bad
     "string#{ expr }"
+
+    
+    # bad
+    "string#{x > 5 || do_the_thing && do_the_other_thing}"
+
+    # good
+    x_over_threshold = x > 5
+    criticle_mass_reached = x_over_threshold || do_the_thing && do_the_other_thing
+    "string#{criticle_mass_reached}"
     ```
 
-    The first style is extremely more popular and you're generally
-    advised to stick with it. The second, on the other hand, is
-    (arguably) a bit more readable. As with hashes - pick one style
-    and apply it consistently.
 
 * No spaces after `(`, `[` or before `]`, `)`.
 
@@ -303,21 +307,15 @@
       do_something
     end
 
-    # control flow
-    document.saved? or document.save!
-
     # good
     # boolean expression
     if some_condition && some_other_condition
       do_something
     end
-
-    # control flow
-    document.saved? || document.save!
     ```
 
 * Favor modifier `if/unless` usage when you have a single-line
-  body. Another good alternative is the usage of control flow `&&/||`.
+  body.
 
     ```Ruby
     # bad
@@ -327,13 +325,9 @@
 
     # good
     do_something if some_condition
-
-    # another good option
-    some_condition && do_something
     ```
 
-* Favor `unless` over `if` for negative conditions (or control
-  flow `||`).
+* Favor `unless` over `if` for negative conditions.
 
     ```Ruby
     # bad
@@ -345,8 +339,6 @@
     # good
     do_something unless some_condition
 
-    # another good option
-    some_condition || do_something
     ```
 
 * Never use `unless` with `else`. Rewrite these with the positive case first.
@@ -365,6 +357,20 @@
     else
       puts 'failure'
     end
+    ```
+
+* Don't use boolean operators for control flow unless the methods are side
+ effect free.
+
+ ```Ruby
+    # bad
+    payment_due? && process_payment!
+
+    # good
+    process_pament! if payment_due?
+    
+    #ok
+    payment_due ||= calculate_payment_due
     ```
 
 * Omit parentheses around parameters for methods that are part of an
