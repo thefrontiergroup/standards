@@ -359,12 +359,12 @@
     end
     ```
 
-* Don't use boolean operators for controll flow unless the methods are side
+* Don't use boolean operators for control flow unless the methods are side
  effect free.
 
  ```Ruby
     # bad
-    payment_due? && process_pament!
+    payment_due? && process_payment!
 
     # good
     process_pament! if payment_due?
