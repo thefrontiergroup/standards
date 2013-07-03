@@ -59,7 +59,7 @@
     [1, 2, 3].each { |e| puts e }
     ```
 
-    The use of spaces around `{` and `}` needs to be carefuly specified,
+    The use of spaces around `{` and `}` needs to be carefully specified,
     as they are used for block and hash literals, as well as string interpolation.
 
     In hash literals, there are no spaces after `{` or before `}`.
@@ -86,9 +86,9 @@
 
     These syntaxes have the advantage of differentiating between hashes and blocks.
     
-    When embeding string literals. Not not add whitespace around the 
+    When embedding string literals. Not not add whitespace around the 
     expression. It adds visual contrast to the surrounding string 
-    and syntax. Secondly interpolaltion values should be kept
+    and syntax. Secondly interpolation values should be kept
     simple.
 
     ```Ruby
@@ -104,8 +104,8 @@
 
     # good
     x_over_threshold = x > 5
-    criticle_mass_reached = x_over_threshold || do_the_thing && do_the_other_thing
-    "string#{criticle_mass_reached}"
+    critical_mass_reached = x_over_threshold || do_the_thing && do_the_other_thing
+    "string#{critical_mass_reached}"
     ```
 
 
@@ -116,30 +116,28 @@
     [1, 2, 3].length
     ```
 
-* Indent `when` as deep as the line containing `case`. I know that
-  many would disagree with this one, but it's the style established
-  in both "The Ruby Programming Language" and "Programming Ruby".
+* Indent `when` as deep as the line containing `case`.
 
-    ```Ruby
-    case
-    when song.name == 'Misty'
-      puts 'Not again!'
-    when song.duration > 120
-      puts 'Too long!'
-    when Time.now.hour > 21
+   ```Ruby
+   case
+   when song.name == 'Misty'
+     puts 'Not again!'
+   when song.duration > 120
+     puts 'Too long!'
+   when Time.now.hour > 21
       puts "It's too late"
-    else
-      song.play
-    end
-
-    kind = case year
-    when 1850..1889 then 'Blues'
-    when 1890..1909 then 'Ragtime'
-    when 1910..1929 then 'New Orleans Jazz'
-    when 1930..1939 then 'Swing'
-    when 1940..1950 then 'Bebop'
-    else 'Jazz'
-    end
+   else
+     song.play
+   end
+   
+   kind = case year
+   when 1850..1889 then 'Blues'
+   when 1890..1909 then 'Ragtime'
+   when 1910..1929 then 'New Orleans Jazz'
+   when 1930..1939 then 'Swing'
+   when 1940..1950 then 'Bebop'
+   else 'Jazz'
+   end
     ```
 
 * Use empty lines between `def`s and to break up a method into logical
@@ -260,7 +258,7 @@
     ```
 
 * Never use single-line `if/then/else/end` constructs.
-  Always use the terniary operator.
+  Always use the ternary operator.
 
     ```Ruby
     # bad
