@@ -84,7 +84,7 @@
 
     These syntaxes have the advantage of differentiating between hashes and blocks.
 
-    When embedding string literals. Not not add whitespace around the
+    When embedding string literals. Do not add whitespace around the
     expression. It adds visual contrast to the surrounding string
     and syntax. Secondly interpolation values should be kept
     simple.
