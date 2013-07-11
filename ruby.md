@@ -479,24 +479,22 @@
   always use parentheses in the method invocation. For example, write
 `f((3 + 2) + 1)`.
 
-### DEBATABLE
-
-* Use the new lambda literal syntax for single line body blocks. Use the
-  `lambda` method for multi-line blocks.
+* Use the `lambda` method for single line body and multi-line blocks. The
+  stabby syntax requires arguments to be displayed unlike any other structure
+  in ruby. Consistency is key.
 
     ```Ruby
     # bad
-    l = lambda { |a, b| a + b }
+    l = -> { |a, b| a + b }
     l.call(1, 2)
 
-    # correct, but looks extremely awkward
     l = ->(a, b) do
       tmp = a * 7
       tmp * b / 50
     end
 
     # good
-    l = ->(a, b) { a + b }
+    l = lambda { |a, b| a + b }
     l.call(1, 2)
 
     l = lambda do |a, b|
