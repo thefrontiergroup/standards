@@ -85,9 +85,9 @@
     ```
 
     These syntaxes have the advantage of differentiating between hashes and blocks.
-    
-    When embedding string literals. Not not add whitespace around the 
-    expression. It adds visual contrast to the surrounding string 
+
+    When embedding string literals. Not not add whitespace around the
+    expression. It adds visual contrast to the surrounding string
     and syntax. Secondly interpolation values should be kept
     simple.
 
@@ -98,7 +98,7 @@
     # bad
     "string#{ expr }"
 
-    
+
     # bad
     "string#{x > 5 || do_the_thing && do_the_other_thing}"
 
@@ -129,7 +129,7 @@
    else
      song.play
    end
-   
+
    kind = case year
    when 1850..1889 then 'Blues'
    when 1890..1909 then 'Ragtime'
@@ -365,7 +365,7 @@
 
     # good
     process_pament! if payment_due?
-    
+
     #ok
     payment_due ||= calculate_payment_due
     ```
