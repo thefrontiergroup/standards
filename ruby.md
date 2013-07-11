@@ -296,13 +296,11 @@
 
     ```Ruby
     # bad
-    # boolean expression
     if some_condition and some_other_condition
       do_something
     end
 
     # good
-    # boolean expression
     if some_condition && some_other_condition
       do_something
     end
