@@ -44,8 +44,6 @@
     # good
     puts 'foo'
     puts 'bar'
-
-    puts 'foo', 'bar' # this applies to puts in particular
     ```
 
 * Use spaces around operators, after commas, colons and semicolons.
