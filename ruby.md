@@ -292,8 +292,7 @@
     x = !something
     ```
 
-* The `and` and `or` keywords are banned. It's just not worth
-  it. Always use `&&` and `||` instead.
+* Always use `&&` and `||` instead over `and` and `or`. `&&` and `||` have different precedence than `and` and `or`.
 
     ```Ruby
     # bad
