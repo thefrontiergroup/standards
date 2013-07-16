@@ -44,8 +44,6 @@
     # good
     puts 'foo'
     puts 'bar'
-
-    puts 'foo', 'bar' # this applies to puts in particular
     ```
 
 * Use spaces around operators, after commas, colons and semicolons.
@@ -86,7 +84,7 @@
 
     These syntaxes have the advantage of differentiating between hashes and blocks.
 
-    When embedding string literals. Not not add whitespace around the
+    When embedding string literals. Do not add whitespace around the
     expression. It adds visual contrast to the surrounding string
     and syntax. Secondly interpolation values should be kept
     simple.
@@ -294,18 +292,15 @@
     x = !something
     ```
 
-* The `and` and `or` keywords are banned. It's just not worth
-  it. Always use `&&` and `||` instead.
+* Always use `&&` and `||` instead over `and` and `or`. `&&` and `||` have different precedence than `and` and `or`.
 
     ```Ruby
     # bad
-    # boolean expression
     if some_condition and some_other_condition
       do_something
     end
 
     # good
-    # boolean expression
     if some_condition && some_other_condition
       do_something
     end
@@ -484,24 +479,22 @@
   always use parentheses in the method invocation. For example, write
 `f((3 + 2) + 1)`.
 
-### DEBATABLE
-
-* Use the new lambda literal syntax for single line body blocks. Use the
-  `lambda` method for multi-line blocks.
+* Prefer the `lambda` method for single line body and multi-line blocks. The
+  stabby syntax requires arguments to be displayed unlike any other structure
+  in ruby. Consistency is key.
 
     ```Ruby
     # bad
-    l = lambda { |a, b| a + b }
+    l = -> { |a, b| a + b }
     l.call(1, 2)
 
-    # correct, but looks extremely awkward
     l = ->(a, b) do
       tmp = a * 7
       tmp * b / 50
     end
 
     # good
-    l = ->(a, b) { a + b }
+    l = lambda { |a, b| a + b }
     l.call(1, 2)
 
     l = lambda do |a, b|
@@ -787,13 +780,10 @@ in accordance with their intended usage. Don't go off leaving
 everything `public` (which is the default). After all we're coding
 in *Ruby* now, not in *Python*.
 
-### DEBATABLE
-
-* Indent the `public`, `protected`, and `private` methods as much the
-  method definitions they apply to. Leave one blank line above the
-  visibility modifier
-  and one blank line below in order to emphasize that it applies to all
-  methods below it.
+* Indent the `public`, `protected`, and `private` methods one indent fewer
+  than the method definitions they apply to. Leave one blank line above the
+  visibility modifier and one blank line below in order to emphasize that it
+  applies to all methods below it.
 
     ```Ruby
     class SomeClass
@@ -801,7 +791,7 @@ in *Ruby* now, not in *Python*.
         # ...
       end
 
-      private
+    private
 
       def private_method
         # ...
