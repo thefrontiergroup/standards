@@ -479,7 +479,7 @@
   always use parentheses in the method invocation. For example, write
 `f((3 + 2) + 1)`.
 
-* Use the `lambda` method for single line body and multi-line blocks. The
+* Prefer the `lambda` method for single line body and multi-line blocks. The
   stabby syntax requires arguments to be displayed unlike any other structure
   in ruby. Consistency is key.
 
