@@ -70,16 +70,15 @@
     {one: 1, two: 2}
     ```
 
-    Single line blocks using braces should include a space around the expression, but
-    not a space before the definition of (any) arguments.
+    Single line blocks using braces should include a space around the expression, and before the definition of (any) arguments.
 
     ```
     # bad
     x = lambda {|a|puts a}
-    x = lambda { |a| puts a }
+    x = lambda {|a| puts a }
 
     # good
-    x = lambda {|a| puts a }
+    x = lambda { |a| puts a }
     ```
 
     These syntaxes have the advantage of differentiating between hashes and blocks.
