@@ -10,6 +10,7 @@ This document is to assist with implementation of ideas and standards as adopted
 * [Language and Syntax](#language-and-syntax)
 * [Folder Layout](#folder-layout)
 * [Patterns](#patterns)
+* [iOS Extending vs Subclassing](#ios-extending-vs-subclassing)
 * [Rakefile](#rakefile)
 
 ## General Development
