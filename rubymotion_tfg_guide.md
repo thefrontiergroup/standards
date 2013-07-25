@@ -73,7 +73,7 @@ Along with the standard MVC folders provided by the rails convention, it is acce
       views
         subviews
       lib
-        managerscal
+        managers
         extensions
         
 *For subviews see Patterns::Subviews*
