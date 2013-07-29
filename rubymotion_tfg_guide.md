@@ -41,14 +41,6 @@ A feature derived from Obj-C is the ability to name parameters or interspersing 
     
 It is acceptable and at times recommended to use this approach as it strengthens compile time validation
 
-### New vs alloc.init
-
-It is recommended that alloc.init be used as the common means of instantiating new objects as it is the traditional Objective-C approach and what is actually used when the rubymotion convention of 'new' is called.
-
-Some Objective-C libraries attach alternative meaning to the 'new' method so you can encounter naming clashes / issues.
-
-By calling alloc.init the desired outcome will always be achieved. 
-
 ### Namespacing
 
 It is suggested that application code that is to revolve around singletons be structured under a common namespace such as Application. 
