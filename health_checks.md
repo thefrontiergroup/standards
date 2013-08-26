@@ -20,8 +20,6 @@ The JSON response structure is as follows.
 {"status":"[STATUS]","message":"[MESSAGE]"}
 ```
 
-A valid string can be created with the following Ruby code:
-
 Valid values for the status field are: 
 
 |Value|Meaning|
