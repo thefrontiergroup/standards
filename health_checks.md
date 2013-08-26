@@ -16,7 +16,7 @@ If a developer wants to use a different URL, they must provide it to a member of
 
 The JSON response structure is as follows.
 
-    ```javascript
+    ``` javascript
     { :status => '[STATUS]', :message => '[MESSAGE]' }
     ```
 
@@ -36,14 +36,14 @@ Any responses that do not match this structure will be treated as critical error
 
 ### Example Responses
 
-    ```javascript
+    ``` javascript
     { :status => 'OK', :message => 'All components operational' }
     ```
 
-    ```javascript
+    ``` javascript
     { :status => 'WARNING', :message => 'Uploads folder not writable, 2 components operational' }
     ```
 
-    ```javascript
+    ``` javascript
     { :status => 'CRITICAL', :message => 'Payment gateway down' }
     ```
