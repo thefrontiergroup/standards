@@ -16,9 +16,11 @@ If a developer wants to use a different URL, they must provide it to a member of
 
 The JSON response structure is as follows.
 
-    ```JSON
-    { :status => '[STATUS]', :message => '[MESSAGE]' }
-    ```
+```js
+{"status":"[STATUS]","message":"[MESSAGE]"}
+```
+
+A valid string can be created with the following Ruby code:
 
 Valid values for the status field are: 
 
@@ -36,14 +38,22 @@ Any responses that do not match this structure will be treated as critical error
 
 ### Example Responses
 
-    ```JSON
-    { :status => 'OK', :message => 'All components operational' }
-    ```
+```js
+{"status":"OK","message":"All components operational"}
+```
 
-    ```JSON
-    { :status => 'WARNING', :message => 'Uploads folder not writable, 2 components operational' }
-    ```
+```js
+{"status":"WARNING","message":"Uploads folder not writable, 2 components operational"}
+```
 
-    ```JSON
-    { :status => 'CRITICAL', :message => 'Payment gateway down' }
-    ```
+```js
+{"status":"CRITICAL","message":"Payment gateway not responding"}
+```
+
+### Generating Responses
+
+The following is Ruby code that can be used to emit a valid JSON response:
+
+```ruby
+{ :status => 'OK', :message => 'All components operational' }.to_json
+```
