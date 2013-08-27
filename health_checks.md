@@ -53,5 +53,5 @@ Any responses that do not match this structure will be treated as critical error
 The following is Ruby code that can be used to emit a valid JSON response:
 
 ```ruby
-{ :status => 'OK', :message => 'All components operational' }.to_json
+{ status: 'OK', message: 'All components operational' }.to_json
 ```
