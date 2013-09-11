@@ -364,28 +364,6 @@
     payment_due ||= calculate_payment_due
     ```
 
-* Omit parentheses around parameters for methods that are part of an
-  internal DSL (e.g. Rake, Rails, RSpec), methods that have
-  "keyword" status in Ruby (e.g. `attr_reader`) and attribute
-  access methods. Use parentheses around the arguments of all other
-  method invocations.
-
-    ```Ruby
-    class Person
-      attr_reader :name, :age
-
-      # omitted
-    end
-
-    temperance = Person.new('Temperance', 30)
-    temperance.name
-
-    x = Math.sin(y)
-    array.delete(e)
-
-    bowling.score.should == 0
-    ```
-
 * Omit parentheses for method calls with no arguments.
 
     ```Ruby
