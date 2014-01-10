@@ -1,14 +1,12 @@
 # General rules
 
-All files that are pulled in via `@import` or `= require` have a leading underscore in their filename (best practice).
-
-All files included directly via `stylesheet_link_tag` live in the root `stylesheets` folder.
+All files that are pulled in via `@import` or `= require` should begin with an underscore (`_`) to follow the SASS/Sprockets convention that prevents these files from being included directly. Any file that is included directly with `stylesheet_link_tag` should not have an underscore and should live in the root `app/assets/stylsheets` directory.
 
 Modules are "business logic", like *Posts*, *Users* and usually relate to a rails Model or Controller and not a specific view or page of the application.
 
-The "lib" folder is for non-output code like mixins, variables and functions.
+The `lib` folder is for non-output code like mixins, variables and functions.
 
-Global is for 'non-business' level styles, that usually relate tightly to HTML elements or layout conventions like: 'header', 'forms', 'footer', 'tables', 'buttons'.
+`global` is for 'non-business' level styles, that usually relate tightly to HTML elements or layout conventions like: 'header', 'forms', 'footer', 'tables' or 'buttons'.
 
 `global/_base.sass` always exists and defines the lowest level layout and presentation. For example: `<p>`, `<h1>` to `<h6>`, `<body>` and other common root level classes/elements like `.container`, `.inner`, `.wrapper` etc.
 
@@ -17,55 +15,51 @@ Global is for 'non-business' level styles, that usually relate tightly to HTML e
 
 ## Single purpose rails, middleman apps.
 
-*Note:* For WordPress sites, the only difference is to use `style.sass` instead of `application.sass` as the root level file. `Style.css` is needed for the WordPress theme to be recognised as theme inside the WordPress backend.
+ > *Note:* For WordPress sites, the only difference is to use `style.sass` instead of `application.sass` as the root level file. `Style.css` is needed for the WordPress theme to be recognised as theme inside the WordPress backend.
 
-All files that are pulled in via `@import` should begin with an underscore (`_`) to follow the SASS/Sprockets convention that prevents these files from being included directly. Any file that is included directly with `stylesheet_link_tag` should not have an underscore and should live in the root `app/assets/stylsheets` directory.
-
-```
-+ modules/
-  - _sidebar.sass
-  - _search.sass
-+ global/
-  - _base.sass
-  - _table.sass
-  - _fonts.sass
-  - _forms.sass
-  - _buttons.sass
-  - _header.sass
-  - _footer.sass
-+ lib/
-  - _functions.sass
-  - _variables.sass
-  - _mixins.sass
-  - _extends.sass
-- application.sass
-```
+* `stylesheets`
+  * `modules`
+    * `_sidebar.sass`
+    * `_search.sass`
+  * `global`
+    * `_base.sass`
+    * `_table.sass`
+    * `_fonts.sass`
+    * `_forms.sass`
+    * `_buttons.sass`
+    * `_header.sass`
+    * `_footer.sass`
+  * `lib`
+    * `_functions.sass`
+    * `_variables.sass`
+    * `_mixins.sass`
+    * `_extends.sass`
+  * `application.sass`
 
 ## Multiple purpose rails app (public/admin/webapp/etc.)
 
-```
-+ lib/
-+ global/
-+ modules/
+ * `stylesheets`
+  * `lib`
+  * `global`
+  * `modules`
 
-- public.sass
-+ public/
-	+ lib/
-	+ global/
-	+ modules/
+  * `public.sass`
+  * `public`
+    * `lib`
+    * `global`
+    * `modules`
 
-- webapp.sass
-+ webapp/
-	+ lib/
-	+ global/
-	+ modules/
+  * `webapp.sass`
+  * `webapp`
+    * `lib`
+    * `global`
+    * `modules`
 
-- admin.sass
-+ admin/
-	+ lib/
-	+ global/
-	+ modules/
-```
+  * `admin.sass`
+  * `admin`
+    * `lib`
+    * `global`
+    * `modules`
 
 # Content of _variables.sass
 
@@ -210,6 +204,7 @@ $default-duration: .25s
   padding: 0
   position: absolute
   width: 1px
+  text-shadow: none
 
 // Form input placeholders
 =placeholder
