@@ -67,7 +67,6 @@ Global is for 'non-business' level styles, that usually relate tightly to HTML e
 
 # Content of _variables.sass
 
-
 ## Colours
 
 At the top of the file, define base colours and branding variables with variable names that make them immediately recognisable and are namespaced to the application. For example:
@@ -88,9 +87,9 @@ $sidebar-background: $tiinkk-green
 The `_variables.sass` should also define commonly used rules like default **radius**, **margins**, transition **durations**, font-families and sizes. For example:
 
 ```sass
-$linkHover: $tiinkk-green
-$defaultRadius: 5px
-$defaultDuration: .3s
+$link-hover: $tiinkk-green
+$default-radius: 5px
+$default-duration: .3s
 ```
 
 ### Example
@@ -106,25 +105,25 @@ $footer-background: $dark-grey
 $social-bar-background: lighten($dark-grey, 20%)
 
 $link: $tiinkk-teal
-$linkHover: $tiinkk-light-blue
+$link-hover: $tiinkk-light-blue
 
 $text-color: #444
 $quote-color: #888
-$textHeader: #242a30
+$text-header: #242a30
 
 $confirmation-background: #22343434
 $confirmation-border: darken($confirmation-background, 20%)
 $confirmation-text: darken($confirmation-background, 30%)
 
 // Fonts
-$fontTitle: Ubuntu, Helvetica, Arial, sans-serif
-$fontBody: Helvetica, Arial, sans-serif
-$fontBodyDefault: normal 14px/1.5 $fontBody
-$fontHeadingDefault: 200 16px/1.3 $fontTitle
+$font-title: Ubuntu, Helvetica, Arial, sans-serif
+$font-body: Helvetica, Arial, sans-serif
+$font-body-default: normal 14px/1.5 $fontBody
+$font-heading-default: 200 16px/1.3 $fontTitle
 
 // Defaults
-$defaultRadius: 6px
-$defaultDuration: .25s
+$default-radius: 6px
+$default-duration: .25s
 ```
 
 # Content of application.sass
