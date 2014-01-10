@@ -48,21 +48,21 @@ Global is for 'non-business' level styles, that usually relate tightly to HTML e
 
 - public.sass
 + public/
-	+ lib
-	+ global
-	+ modules
+	+ lib/
+	+ global/
+	+ modules/
 
 - webapp.sass
 + webapp/
-	+ lib
-	+ global
-	+ modules
+	+ lib/
+	+ global/
+	+ modules/
 
 - admin.sass
 + admin/
-	+ lib
-	+ global
-	+ modules
+	+ lib/
+	+ global/
+	+ modules/
 ```
 
 # Content of _variables.sass
