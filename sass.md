@@ -38,10 +38,10 @@ The `global/_base.sass` file should always exists and defines the lowest level l
     * `_footer.sass`
   * `lib`
     * `_functions.sass`
-    * `_variables.sass` ([example](#extends-lib_variablessass))
-    * `_mixins.sass` ([example](#extends-lib_mixinssass))
+    * `_variables.sass` ([example](#variables-lib_variablessass))
+    * `_mixins.sass` ([example](#mixins-lib_mixinssass))
     * `_extends.sass` ([example](#extends-lib_extendssass))
-  * `application.sass` ([example](#extends-lib_applicationsass))
+  * `application.sass` ([example](#application-lib_applicationsass))
 
 ## Multipurpose Rails Applications
 
