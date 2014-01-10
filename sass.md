@@ -201,7 +201,6 @@ $default-duration: .25s
   padding: 0
   position: absolute
   width: 1px
-  text-shadow: none
 
 // Form input placeholders
 =placeholder
@@ -227,6 +226,7 @@ $default-duration: .25s
   overflow: hidden
   text-align: left
   text-indent: -100px
+  text-shadow: none
 
 %list-reset
   list-style: none
