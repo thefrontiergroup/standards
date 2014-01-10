@@ -32,10 +32,10 @@ Global is for 'non-business' level styles, that usually relate tightly to HTML e
   - _header.sass
   - _footer.sass
 + lib/
-  - _functions.sass **EXAMPLE**
+  - _functions.sass
   - _variables.sass
-  - _mixins.sass **EXAMPLE**
-  - _extends.sass **EXAMPLE**
+  - _mixins.sass
+  - _extends.sass
 - application.sass
 ```
 
