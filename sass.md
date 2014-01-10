@@ -42,19 +42,16 @@ The `lib` folder is for non-output code like mixins, variables and functions.
   * `lib`
   * `global`
   * `modules`
-
   * `public.sass`
   * `public`
     * `lib`
     * `global`
     * `modules`
-
   * `webapp.sass`
   * `webapp`
     * `lib`
     * `global`
     * `modules`
-
   * `admin.sass`
   * `admin`
     * `lib`
