@@ -19,6 +19,8 @@ Global is for 'non-business' level styles, that usually relate tightly to HTML e
 
 *Note:* For WordPress sites, the only difference is to use `style.sass` instead of `application.sass` as the root level file. `Style.css` is needed for the WordPress theme to be recognised as theme inside the WordPress backend.
 
+All files that are pulled in via `@import` should begin with an underscore (`_`) to follow the SASS/Sprockets convention that prevents these files from being included directly. Any file that is included directly with `stylesheet_link_tag` should not have an underscore and should live in the root `app/assets/stylsheets` directory.
+
 ```
 + modules/
   - _sidebar.sass
