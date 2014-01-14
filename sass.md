@@ -1,4 +1,44 @@
-# General rules
+At The Frontier Group we use SASS, so this style guide will focus primarily on the usage of SASS, however many of these rules will also apply to vanilla CSS.
+
+# The Rule Book
+
+## Syntax
+
+* Use two **spaces** per indentation level. No hard tabs.
+* Put spaces after `:` in property declarations.
+* Use spaces after comma separated values, let the minifier take care of compression.
+* Use hex color codes, shortening to the shorthand form where possible:
+
+  ```sass
+  body
+    color: rgb(0, 17, 34) // bad
+    color: #001122 // better
+    color: #012 // best
+  ```
+
+* Leverage [SASS color functions](http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html) to make your life easier, for example `rgba()` can take hex values; `rgba(#666, 0.5)` will result in `rgba(102, 102, 102, 0.5)`
+* Define your own SASS functions for commonly used operations.
+* Don't use the Property Syntax (`:property_syntax`)
+
+  ```sass
+  // good
+  #main
+    color: blue
+    font-size: 8px
+
+  // bad
+  #main
+    :color blue
+    :font-size 0.3em
+  ```
+
+### Sass vs. SCSS
+
+At TFG we have standardised on [SASS’ indented syntax](http://sass-lang.com/docs/yardoc/file.INDENTED_SYNTAX.html) as it is more concise and shares the same indentation sensitive style of [HAML](http://haml.info/). This may be a point of contention as the Rails community and the SASS authors have standardised on the SCSS syntax due to its similarities to CSS and reduced learning curve, while we feel we’re smart enough to handle the syntax change and the addition of superfluous curly-braces and semicolons provides little-to-no benefit.
+
+## Pixels vs. Em/Pts
+
+Use `px` for `font-size`, because it offers absolute control over text. Most modern browsers now do full screen zooming rather than text zooming. Additionally, unit-less line-height is preferred because it does not inherit a percentage value of its parent element, but instead is based on a multiplier of the `font-size`.
 
 ## File Naming
 All files that are pulled in via `@import` or `= require` should begin with an underscore (`_`) to follow the SASS/Sprockets convention that prevents these files from being included directly. Any file that is included directly with `stylesheet_link_tag` should not have an underscore and should live in the root `app/assets/stylsheets` directory.
@@ -213,11 +253,6 @@ This should ideally be the only file that is included directly via `stylesheet_l
   text-align: left
   text-indent: -100px
   text-shadow: none
-
-%list-reset
-  list-style: none
-  margin: 0
-  padding: 0
 
 %sprites
   background-image: image-url("sprites.png")
