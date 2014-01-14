@@ -20,7 +20,7 @@
 
 # CSS / SASS
 
-At The Frontier Group we use SASS, so this style guide will focus primarily on the usage of SASS, however many of these rules will also apply to vanilla CSS.
+This style guide focusses primarily on the usage of SASS, which is the standard at The Frontier Group. Due to similarities in syntax, many of these rules will also apply to vanilla CSS.
 
 ## Syntax
 
