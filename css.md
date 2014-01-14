@@ -9,8 +9,8 @@
   * [Libraries](#libraries-lib)
   * [Global](#global-global)
 * [Ideal Directory Structures](#ideal-directory-structures)
-  * [Single Purpose Applications](#single-purpose-rails-middleman-wordpress-applications)
-  * [Multipurpose Rails Applications](#multipurpose-rails-applications)
+  * [Single Purpose Applications](#single-purpose-applications)
+  * [Multipurpose Applications](#multipurpose-applications)
 * [Example Files](#example-files)
   * [Variables](#variables-lib_variablescsssass)
   * [Application](#application-applicationcsssass)
@@ -81,7 +81,7 @@ The `global/_base.css.sass` file should always exists and defines the lowest lev
 
 ## Ideal Directory Structures
 
-### Single Purpose Rails, Middleman, WordPress Applications
+### Single Purpose Applications
 
  > *Note:* For WordPress sites, the only difference is to use `style.css.sass` instead of `application.css.sass` as the root level file. `Style.css` is needed for the WordPress theme to be recognised as theme inside the WordPress backend.
 
@@ -105,7 +105,7 @@ The `global/_base.css.sass` file should always exists and defines the lowest lev
     * `_extends.css.sass` ([example](#extends-lib_extendssass))
   * `application.css.sass` ([example](#application-lib_applicationsass))
 
-### Multipurpose Rails Applications
+### Multipurpose Applications
 
 #### Suggested Naming Convention
 
