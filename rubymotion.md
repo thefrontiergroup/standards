@@ -17,7 +17,7 @@ This document is to assist with implementation of ideas and standards as adopted
 
 Whilst rubymotion is a ruby language implementation the TFG methodology is intended to be driven largely by Objective-C conventions rather than attempting to replace Obj-C entirely.
 
-The reason being we are developing an Objective-C application and use the native methods and SDK functionality. Hence to develop inline with that functionality creates less of an opportunity for inconsistency. 
+The reason being we are developing an Objective-C application and use the native methods and SDK functionality. Hence to develop inline with that functionality creates less of an opportunity for inconsistency.
 
 ## Language and Syntax
 
@@ -36,14 +36,14 @@ Methods and variables should be named in accordance with iOS standards using cam
 A feature derived from Obj-C is the ability to name parameters or interspersing the method name with the parameters. Via this approach it is possible to create what looks to be the same method with different outcomes based on the parameters:
 
     def showTable(table); end
-    
+
     def showTable(table, withContent: content); end
-    
+
 It is acceptable and at times recommended to use this approach as it strengthens compile time validation
 
 ### Namespacing
 
-It is suggested that application code that is to revolve around singletons be structured under a common namespace such as Application. 
+It is suggested that application code that is to revolve around singletons be structured under a common namespace such as Application.
 
 eg
 
@@ -51,7 +51,7 @@ eg
 
 Note the use of an 'instance' class level method which would create the one shared instance.
 
-For other code such as controllers, models and views it is not recommended these be namespaces as it provides no real 
+For other code such as controllers, models and views it is not recommended these be namespaces as it provides no real
 
 ## Folder Layout
 
@@ -67,9 +67,9 @@ Along with the standard MVC folders provided by the rails convention, it is acce
       lib
         managers
         extensions
-        
+
 *For subviews see Patterns::Subviews*
-*For managers see Patterns::Managers*   
+*For managers see Patterns::Managers*
 
 ### Lib folder
 
@@ -89,7 +89,7 @@ It is expected that any view stored in the subviews folder is a portion of a pag
 
 Managers are a deviation from MVC in that there are cases where we require a globally accessible, single point of communication to drive a shared action or manage a shared instance.
 
-A manager is a singleton and it is suggested the singleton be namespaces given it can be said to be 'The Applications something manager'. 
+A manager is a singleton and it is suggested the singleton be namespaces given it can be said to be 'The Applications something manager'.
 
 In all cases it is expected that a manager has no view tied to it as they are a container for logic and actions.
 
@@ -102,14 +102,14 @@ Instantiation of managers can either be via a class level instance method
 	    end
 	  end
 	end
-	
+
 or via a namespaced method
 
 	module App
 	  def self.globalManager
 	  	@globalManager ||= GlobalManager.alloc.init
 	  end
-	  
+
 	  class GlobalManager
 	  …
 	  end
@@ -155,7 +155,7 @@ Cocoapods is a collection of code offerings, not a contribution from a single tr
 
 One example of this is the testflight and crittercism pods add to the libraries variable, both libraries and load flags. These load flags will override your ability to set :force_load=>false on a vendored library.
 
-Instead it is possible to vendor the libraries yourself and statically load them without the flags. 
+Instead it is possible to vendor the libraries yourself and statically load them without the flags.
 
 ### Load Order
 
@@ -164,5 +164,5 @@ When compiling an application it is often necessary to force the load order of c
 In the Rakefile you can add the following to prioritise the loading of your lib folders:
 
 	app.files = Dir.glob(File.join(app.project_dir, 'app/lib/**/*.rb')) | app.files
-	
+
 It is not recommended that you replace entirely the app.files with your own loading as other libraries such as cocoa pods will populate the variable. Instead manipulating the existing file set is better.
