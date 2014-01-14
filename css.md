@@ -79,13 +79,13 @@ The Global directory is for non-business level styles, that usually relate tight
 The `global/_base.css.sass` file should always exists and defines the lowest level layout and presentation. For example: `<p>`, `<h1>` to `<h6>`, `<body>` and other common root level classes/elements like `.container`, `.inner`, `.wrapper` etc. This is where the base styling for the application really starts.
 
 
-# Ideal Directory Structures
+## Ideal Directory Structures
 
-## Single Purpose Rails, Middleman, WordPress Applications
+### Single Purpose Rails, Middleman, WordPress Applications
 
  > *Note:* For WordPress sites, the only difference is to use `style.css.sass` instead of `application.css.sass` as the root level file. `Style.css` is needed for the WordPress theme to be recognised as theme inside the WordPress backend.
 
-### Directory Structure
+#### Directory Structure
 * `stylesheets`
   * `modules`
     * `_sidebar.css.sass`
@@ -105,15 +105,15 @@ The `global/_base.css.sass` file should always exists and defines the lowest lev
     * `_extends.css.sass` ([example](#extends-lib_extendssass))
   * `application.css.sass` ([example](#application-lib_applicationsass))
 
-## Multipurpose Rails Applications
+### Multipurpose Rails Applications
 
-### Suggested Naming Convention
+#### Suggested Naming Convention
 
  * Brochure site for the general public: `public`
  * Administration backend: `admin`
  * Web application: `application` or `webapp`
 
-### Directory Structure
+#### Directory Structure
  * `stylesheets`
   * `lib`
   * `global`
@@ -134,9 +134,9 @@ The `global/_base.css.sass` file should always exists and defines the lowest lev
     * `global`
     * `modules`
 
-# Example Files
+## Example Files
 
-## Variables (`lib/_variables.css.sass`)
+### Variables (`lib/_variables.css.sass`)
 
 Variables should match the naming convention of the language they’re written in, so camelCase is not ideal for SASS, SCSS, LESS or CSS, instead use `$dashed-names`.
 
@@ -187,7 +187,7 @@ $default-radius: 6px
 $default-duration: .25s
 ```
 
-## Application (`application.css.sass`)
+### Application (`application.css.sass`)
 
 This should ideally be the only file that is included directly via `stylesheet_link_tag`. We also want to define specific order of import for the `lib` files as we may be making use of `_functions.css.sass` in `_variables.css.sass` or `_variables.css.sass` in `_mixins.css.sass`.
 
@@ -207,7 +207,7 @@ This should ideally be the only file that is included directly via `stylesheet_l
 @import modules/*
 ```
 
-## Functions (`lib/_functions.css.sass`)
+### Functions (`lib/_functions.css.sass`)
 
 ```sass
 @function black($opacity)
@@ -224,7 +224,7 @@ This should ideally be the only file that is included directly via `stylesheet_l
 ```
 
 
-## Mixins (`lib/_mixins.css.sass`)
+### Mixins (`lib/_mixins.css.sass`)
 
 ```sass
 // Default value set to 1.3 to target Google Nexus 7 (http://bjango.com/articles/min-device-pixel-ratio/)
@@ -263,7 +263,7 @@ This should ideally be the only file that is included directly via `stylesheet_l
 ```
 
 
-## Extends (`lib/_extends.css.sass`)
+### Extends (`lib/_extends.css.sass`)
 
 ```sass
 %hide-text
