@@ -31,28 +31,24 @@
     end
     ```
 
-* Don't use `;` to separate statements and expressions. As a
-  corollary - use one expression per line.
+* Don't use `;` to separate statements and expressions. Trailing semicolons
+  are also not to be used.
 
     ```Ruby
     # bad
-    puts 'foobar'; # superfluous semicolon
+    puts 'foobar'; # trailing semicolon
 
-    puts 'foo'; puts 'bar' # two expression on the same line
+    # bad
+    puts 'foo'; puts 'bar' # two expression
 
     # good
-    puts 'foobar'
-
     puts 'foo'
     puts 'bar'
-
-    puts 'foo', 'bar' # this applies to puts in particular
     ```
 
-* Use spaces around operators, after commas, colons and semicolons, around `{`
-  and before `}`. Whitespace might be (mostly) irrelevant to the Ruby
-  interpreter, but its proper use is the key to writing easily
-  readable code.
+* Use spaces around operators, after commas, colons and semicolons.
+  Whitespace might often be semantically irrelevant, but its proper
+  use is the key to writing readable code.
 
     ```Ruby
     sum = 1 + 2
@@ -61,48 +57,54 @@
     [1, 2, 3].each { |e| puts e }
     ```
 
-    The only exception, regarding operators, is the exponent operator:
+    The use of spaces around `{` and `}` needs to be carefully specified,
+    as they are used for block and hash literals, as well as string interpolation.
+
+    In hash literals, there are no spaces after `{` or before `}`.
 
     ```Ruby
     # bad
-    e = M * c ** 2
-
-    # good
-    e = M * c**2
-    ```
-
-    `{` and `}` deserve a bit of clarification, since they are used
-    for block and hash literals, as well as embedded expressions in
-    strings. For hash literals two styles are considered acceptable.
-
-    ```Ruby
-    # good - space after { and before }
     { one: 1, two: 2 }
 
-    # good - no space after { and before }
+    # good
     {one: 1, two: 2}
     ```
 
-    The first variant is slightly more readable (and arguably more
-    popular in the Ruby community in general). The second variant has
-    the advantage of adding visual difference between block and hash
-    literals. Whichever one you pick - apply it consistently.
+    Single line blocks using braces should include a space around the expression, and before the definition of (any) arguments.
 
-    As far as embedded expressions go, there are also two acceptable
-    options:
+    ```
+    # bad
+    x = lambda {|a|puts a}
+    x = lambda {|a| puts a }
 
-    ```Ruby
-    # good - no spaces
-    "string#{expr}"
-
-    # ok - arguably more readable
-    "string#{ expr }"
+    # good
+    x = lambda { |a| puts a }
     ```
 
-    The first style is extremely more popular and you're generally
-    advised to stick with it. The second, on the other hand, is
-    (arguably) a bit more readable. As with hashes - pick one style
-    and apply it consistently.
+    These syntaxes have the advantage of differentiating between hashes and blocks.
+
+    When embedding string literals. Do not add whitespace around the
+    expression. It adds visual contrast to the surrounding string
+    and syntax. Secondly interpolation values should be kept
+    simple.
+
+    ```Ruby
+    # good
+    "string#{expr}"
+
+    # bad
+    "string#{ expr }"
+
+
+    # bad
+    "string#{x > 5 || do_the_thing && do_the_other_thing}"
+
+    # good
+    x_over_threshold = x > 5
+    critical_mass_reached = x_over_threshold || do_the_thing && do_the_other_thing
+    "string#{critical_mass_reached}"
+    ```
+
 
 * No spaces after `(`, `[` or before `]`, `)`.
 
@@ -111,34 +113,33 @@
     [1, 2, 3].length
     ```
 
-* Indent `when` as deep as `case`. I know that many would disagree
-  with this one, but it's the style established in both "The Ruby
-  Programming Language" and "Programming Ruby".
+* Indent `when` as deep as the line containing `case`.
 
-    ```Ruby
-    case
-    when song.name == 'Misty'
-      puts 'Not again!'
-    when song.duration > 120
-      puts 'Too long!'
-    when Time.now.hour > 21
+   ```Ruby
+   case
+   when song.name == 'Misty'
+     puts 'Not again!'
+   when song.duration > 120
+     puts 'Too long!'
+   when Time.now.hour > 21
       puts "It's too late"
-    else
-      song.play
-    end
+   else
+     song.play
+   end
 
-    kind = case year
-           when 1850..1889 then 'Blues'
-           when 1890..1909 then 'Ragtime'
-           when 1910..1929 then 'New Orleans Jazz'
-           when 1930..1939 then 'Swing'
-           when 1940..1950 then 'Bebop'
-           else 'Jazz'
-           end
+   kind = case year
+   when 1850..1889 then 'Blues'
+   when 1890..1909 then 'Ragtime'
+   when 1910..1929 then 'New Orleans Jazz'
+   when 1930..1939 then 'Swing'
+   when 1940..1950 then 'Bebop'
+   else 'Jazz'
+   end
     ```
 
 * Use empty lines between `def`s and to break up a method into logical
-  paragraphs.
+  paragraphs. Do not include empty lines before the first expression in a
+  method/block, or after the last expression.
 
     ```Ruby
     def some_method
@@ -154,15 +155,15 @@
     end
     ```
 
-* Don't use spaces around the `=` operator when assigning default values to method parameters:
+* Use spaces around the `=` operator when assigning default values to method parameters:
 
     ```Ruby
-    # good
+    # bad
     def some_method(arg1=:default, arg2=nil, arg3=[])
       # do something...
     end
 
-    # bad
+    # good
     def some_method(arg1 = :default, arg2 = nil, arg3 = [])
       # do something...
     end
@@ -195,6 +196,7 @@
     ```
 
 * Limit lines to 80 characters.
+
 * Avoid trailing whitespace.
 
 ## Syntax
@@ -224,11 +226,7 @@
      end
      ```
 
-* Never use `for`, unless you know exactly why. Most of the time iterators
-  should be used instead. `for` is implemented in terms of `each` (so
-  you're adding a level of indirection), but with a twist - `for`
-  doesn't introduce a new scope (unlike `each`) and variables defined
-  in its block will be visible outside it.
+* Never use `for`, use `each` instead.
 
     ```Ruby
     arr = [1, 2, 3]
@@ -242,7 +240,7 @@
     arr.each { |elem| puts elem }
     ```
 
-* Never use `then` for multi-line `if/unless`.
+* Never use `then`.
 
     ```Ruby
     # bad
@@ -256,8 +254,8 @@
     end
     ```
 
-* Favor the ternary operator(`?:`) over `if/then/else/end` constructs.
-  It's more common and obviously more concise.
+* Never use single-line `if/then/else/end` constructs.
+  Always use the ternary operator.
 
     ```Ruby
     # bad
@@ -293,31 +291,22 @@
     x = !something
     ```
 
-* The `and` and `or` keywords are banned. It's just not worth
-  it. Always use `&&` and `||` instead.
+* Always use `&&` and `||` instead over `and` and `or`. `&&` and `||` have different precedence than `and` and `or`.
 
     ```Ruby
     # bad
-    # boolean expression
     if some_condition and some_other_condition
       do_something
     end
 
-    # control flow
-    document.saved? or document.save!
-
     # good
-    # boolean expression
     if some_condition && some_other_condition
       do_something
     end
-
-    # control flow
-    document.saved? || document.save!
     ```
 
 * Favor modifier `if/unless` usage when you have a single-line
-  body. Another good alternative is the usage of control flow `&&/||`.
+  body.
 
     ```Ruby
     # bad
@@ -327,13 +316,9 @@
 
     # good
     do_something if some_condition
-
-    # another good option
-    some_condition && do_something
     ```
 
-* Favor `unless` over `if` for negative conditions (or control
-  flow `||`).
+* Favor `unless` over `if` for negative conditions.
 
     ```Ruby
     # bad
@@ -345,8 +330,6 @@
     # good
     do_something unless some_condition
 
-    # another good option
-    some_condition || do_something
     ```
 
 * Never use `unless` with `else`. Rewrite these with the positive case first.
@@ -367,26 +350,18 @@
     end
     ```
 
-* Omit parentheses around parameters for methods that are part of an
-  internal DSL (e.g. Rake, Rails, RSpec), methods that have
-  "keyword" status in Ruby (e.g. `attr_reader`) and attribute
-  access methods. Use parentheses around the arguments of all other
-  method invocations.
+* Don't use boolean operators for control flow unless the methods are side
+ effect free.
 
-    ```Ruby
-    class Person
-      attr_reader :name, :age
+ ```Ruby
+    # bad
+    payment_due? && process_payment!
 
-      # omitted
-    end
+    # good
+    process_pament! if payment_due?
 
-    temperance = Person.new('Temperance', 30)
-    temperance.name
-
-    x = Math.sin(y)
-    array.delete(e)
-
-    bowling.score.should == 0
+    #ok
+    payment_due ||= calculate_payment_due
     ```
 
 * Omit parentheses for method calls with no arguments.
@@ -405,7 +380,7 @@
     'test'.upcase
     ```
 
-* Prefer `{...}` over `do...end` for single-line blocks.  Avoid using
+* Never use `do...end` for single-line blocks.  Avoid using
   `{...}` for multi-line blocks (multiline chaining is always
   ugly). Always use `do...end` for "control flow" and "method
   definitions" (e.g. in Rakefiles and certain DSLs).  Avoid `do...end`
@@ -431,11 +406,7 @@
     names.select { |name| name.start_with?('S') }.map { |name| name.upcase }
     ```
 
-    Some will argue that multiline chaining would look OK with the use of {...}, but they should
-    ask themselves - is this code really readable and can the blocks' contents be extracted into
-    nifty methods?
-
-* Avoid `return` where not required for flow of control.
+* Avoid `return` where already implicit.
 
     ```Ruby
     # bad
@@ -485,24 +456,22 @@
   always use parentheses in the method invocation. For example, write
 `f((3 + 2) + 1)`.
 
-### DEBATABLE
-
-* Use the new lambda literal syntax for single line body blocks. Use the
-  `lambda` method for multi-line blocks.
+* Prefer the `lambda` method for single line body and multi-line blocks. The
+  stabby syntax requires arguments to be displayed unlike any other structure
+  in ruby. Consistency is key.
 
     ```Ruby
     # bad
-    l = lambda { |a, b| a + b }
+    l = -> { |a, b| a + b }
     l.call(1, 2)
 
-    # correct, but looks extremely awkward
     l = ->(a, b) do
       tmp = a * 7
       tmp * b / 50
     end
 
     # good
-    l = ->(a, b) { a + b }
+    l = lambda { |a, b| a + b }
     l.call(1, 2)
 
     l = lambda do |a, b|
@@ -788,13 +757,10 @@ in accordance with their intended usage. Don't go off leaving
 everything `public` (which is the default). After all we're coding
 in *Ruby* now, not in *Python*.
 
-### DEBATABLE
-
-* Indent the `public`, `protected`, and `private` methods as much the
-  method definitions they apply to. Leave one blank line above the
-  visibility modifier
-  and one blank line below in order to emphasize that it applies to all
-  methods below it.
+* Indent the `public`, `protected`, and `private` methods one indent fewer
+  than the method definitions they apply to. Leave one blank line above the
+  visibility modifier and one blank line below in order to emphasize that it
+  applies to all methods below it.
 
     ```Ruby
     class SomeClass
@@ -802,7 +768,7 @@ in *Ruby* now, not in *Python*.
         # ...
       end
 
-      private
+    private
 
       def private_method
         # ...
