@@ -1,6 +1,26 @@
-At The Frontier Group we use SASS, so this style guide will focus primarily on the usage of SASS, however many of these rules will also apply to vanilla CSS.
+## Table of Contents
 
-# The Rule Book
+* [Syntax](#syntax)
+  * [SASS vs. SCSS](#sass-vs-scss)
+  * [Pixels vs. Em/Pts](#pixels-vs-empts)
+* [Directory Structure](#directory-structure)
+  * [File Naming](#file-naming)
+  * [Modules](#modules-modules)
+  * [Libraries](#libraries-lib)
+  * [Global](#global-global)
+* [Ideal Directory Structures](#ideal-directory-structures)
+  * [Single Purpose Applications](#single-purpose-rails-middleman-wordpress-applications)
+  * [Multipurpose Rails Applications](#multipurpose-rails-applications)
+* [Example Files](#example-files)
+  * [Variables](#variables-lib_variablescsssass)
+  * [Application](#application-applicationcsssass)
+  * [Functions](#functions-lib_functionscsssass)
+  * [Mixins](#mixins-lib_mixinscsssass)
+  * [Extends](#extends-lib_extendscsssass)
+
+# CSS / SASS
+
+At The Frontier Group we use SASS, so this style guide will focus primarily on the usage of SASS, however many of these rules will also apply to vanilla CSS.
 
 ## Syntax
 
@@ -32,20 +52,20 @@ At The Frontier Group we use SASS, so this style guide will focus primarily on t
     :font-size 0.3em
   ```
 
-### Sass vs. SCSS
+### SASS vs. SCSS
 
 At TFG we have standardised on [SASS’ indented syntax](http://sass-lang.com/docs/yardoc/file.INDENTED_SYNTAX.html) as it is more concise and shares the same indentation sensitive style of [HAML](http://haml.info/). This may be a point of contention as the Rails community and the SASS authors have standardised on the SCSS syntax due to its similarities to CSS and reduced learning curve, while we feel we’re smart enough to handle the syntax change and the addition of superfluous curly-braces and semicolons provides little-to-no benefit.
 
-## Pixels vs. Em/Pts
+### Pixels vs. Em/Pts
 
 Use `px` for `font-size`, because it offers absolute control over text. Most modern browsers now do full screen zooming rather than text zooming. Additionally, unit-less line-height is preferred because it does not inherit a percentage value of its parent element, but instead is based on a multiplier of the `font-size`.
 
-## File Naming
+## Directory Structure
+
+### File Naming
 All files that are pulled in via `@import` or `= require` should begin with an underscore (`_`) to follow the SASS/Sprockets convention that prevents these files from being included directly. Any file that is included directly with `stylesheet_link_tag` should not have an underscore and should live in the root `app/assets/stylsheets` directory.
 
 SASS file names should end in `.css.sass` to follow the Sprockets naming convention that defines what preprocessors to use in reverse order.
-
-## Directory Structure
 
 ### Modules (`modules`)
 Modules are “business logic elements”, like *Posts* or *Users* and usually relate to a Rails Model and not a specific view or page of the application. We would ideally like to avoid view-specific styles, instead keeping them as generic as possible should the element or Module be moved to more than one view.
