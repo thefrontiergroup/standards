@@ -54,7 +54,7 @@ This style guide focusses primarily on the usage of SASS, which is the standard 
 
 ### SASS vs. SCSS
 
-At TFG we have standardised on [SASS’ indented syntax](http://sass-lang.com/docs/yardoc/file.INDENTED_SYNTAX.html) as it is more concise and shares the same indentation sensitive style of [HAML](http://haml.info/). This may be a point of contention as the Rails community and the SASS authors have standardised on the SCSS syntax due to its similarities to CSS and reduced learning curve, while we feel we’re smart enough to handle the syntax change and the addition of superfluous curly-braces and semicolons provides little-to-no benefit.
+At TFG we have standardised on [SASS’ indented syntax](http://sass-lang.com/docs/yardoc/file.INDENTED_SYNTAX.html) as it is more concise and shares the same indentation sensitive style of [HAML](http://haml.info/). This may be a point of contention as the Rails community and the SASS authors have standardised on the SCSS syntax due to its similarities to CSS and reduced learning curve. We feel we’re smart enough to handle the syntax change and the addition of curly-braces and semicolons provides little-to-no benefit.
 
 ### Pixels vs. Em/Pts
 
@@ -68,7 +68,9 @@ All files that are pulled in via `@import` or `= require` should begin with an u
 SASS file names should end in `.css.sass` to follow the Sprockets naming convention that defines what preprocessors to use in reverse order.
 
 ### Modules (`modules`)
-Modules are “business logic elements”, like *Posts* or *Users* and usually relate to a Rails Model and not a specific view or page of the application. We would ideally like to avoid view-specific styles, instead keeping them as generic as possible should the element or Module be moved to more than one view.
+Modules are “business logic elements”, like *Posts* or *Users* and usually relate to a Rails Model and not a specific view or page of the application.
+
+> Ideally we avoid view-specific styles, instead keeping them as generic as possible should the element or Module be moved to more than one view. View specific styles go against the cascading, reusable nature of CSS. In past projects, view specific styles have made adding new features difficult and caused a lot of duplicated code.
 
 ### Libraries (`lib`)
 The Libraries directory is for non-output code like mixins, variables and functions. The Rails `lib/assets/stylesheets` directory should continue to be used for truly shared libraries and the `vendor/assets/stylesheets` folder for vendor assets.
@@ -76,14 +78,14 @@ The Libraries directory is for non-output code like mixins, variables and functi
 ### Global (`global`)
 The Global directory is for non-business level styles, that usually relate tightly to HTML elements or layout conventions like, for example: 'header', 'forms', 'footer', 'tables' or 'buttons'.
 
-The `global/_base.css.sass` file should always exists and defines the lowest level layout and presentation. For example: `<p>`, `<h1>` to `<h6>`, `<body>` and other common root level classes/elements like `.container`, `.inner`, `.wrapper` etc. This is where the base styling for the application really starts.
+The `global/_base.css.sass` file should always exist and define the lowest level layout and presentation. For example: `<p>`, `<h1>` to `<h6>`, `<body>` and other common root level classes/elements like `.container`, `.inner`, `.wrapper` etc. This is where the base styling for the application really starts.
 
 
 ## Ideal Directory Structures
 
 ### Single Purpose Applications
 
- > *Note:* For WordPress sites, the only difference is to use `style.css.sass` instead of `application.css.sass` as the root level file. `Style.css` is needed for the WordPress theme to be recognised as theme inside the WordPress backend.
+ > *Note:* For WordPress sites, the only difference is to use `style.css.sass` instead of `application.css.sass` as the root level file. `style.css` is needed for the WordPress theme to be recognised as theme inside the WordPress backend.
 
 #### Directory Structure
 * `stylesheets`
@@ -153,7 +155,7 @@ These brand variables, ideally, shouldn’t be used directly, instead should be 
 $sidebar-background: $tiinkk-green
 ```
 
-It’s suggested to define visual rythm / default variables to ensure your application is styled consistently, some examples include; `border-radius`, `margins`, `transition durations`, `font-families` and `font-sizes`.
+It’s suggested to define visual rhythm / default variables to ensure your application is styled consistently, some examples include; `border-radius`, `margins`, `transition durations`, `font-families` and `font-sizes`.
 
 ```sass
 // Brand Colors
