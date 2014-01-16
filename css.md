@@ -193,7 +193,7 @@ $default-duration: .25s
 
 This should ideally be the only file that is included directly via `stylesheet_link_tag`. We also want to define specific order of import for the `lib` files as we may be making use of `_functions.css.sass` in `_variables.css.sass` or `_variables.css.sass` in `_mixins.css.sass`.
 
-> Note that SASS `@import` does not require the explicit use of underscores for filenames. Also be sure to use `@import "folder/**/*" to import all files and folders under a particular directory.
+> Note that SASS `@import` does not require the explicit use of underscores for filenames. Also be sure to use `@import "folder/**/*"` to import all files and folders under a particular directory.
 
 ```sass
 @import "compass"
