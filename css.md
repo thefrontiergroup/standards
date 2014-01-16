@@ -196,8 +196,7 @@ This should ideally be the only file that is included directly via `stylesheet_l
 > Note that SASS `@import` does not require the explicit use of underscores for filenames. Also be sure to use `@import "folder/**/*"` to import all files and folders under a particular directory.
 
 ```sass
-@import "compass"
-@import "compass/reset"
+@import "compass", "compass/reset"
 
 @import "lib/functions", "lib/variables", "lib/mixins", "lib/extends"
 
