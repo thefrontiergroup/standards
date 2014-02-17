@@ -873,7 +873,7 @@ block.
 * Favor the use of exceptions for the standard library over
 introducing new exception classes.
 
-* When rescuing from an excpetion as part of a method definition
+* When rescuing from an exception as part of a method definition
 align `rescue` with `def` and `end`.
 
     ```Ruby
