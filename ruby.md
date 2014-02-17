@@ -873,6 +873,25 @@ block.
 * Favor the use of exceptions for the standard library over
 introducing new exception classes.
 
+* When rescuing from an excpetion as part of a method definition
+align `rescue` with `def` and `end`.
+
+    ```Ruby
+    # bad
+    def foo
+      # .. do things
+      rescue MyException
+         # .. handle error
+    end
+    
+    # good
+    def foo
+      # .. do things
+    rescue MyException
+      # .. handle error
+    end
+    ```
+
 ## Collections
 
 * Use `Set` instead of `Array` when dealing with unique elements. `Set`
