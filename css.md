@@ -80,6 +80,9 @@ The naming of functions, extends, mixins and variables should match the naming c
       font-size: convert_to_rem(16px)
   ```
 
+> *Note:* Only exception - for IDs and Classes - is, when a Gem introduces a certain naming convention for generated content and we have no control over it.
+
+
 ## Directory Structure
 
 ### File Naming
