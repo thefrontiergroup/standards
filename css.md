@@ -25,7 +25,7 @@ This style guide focusses primarily on the usage of SASS, which is the standard 
 ## Syntax
 
 * Use two **spaces** per indentation level. No hard tabs.
-* Put spaces after `:` in property declarations.
+* Use one space after `:` in property declarations.
 * Use spaces after comma separated values, let the minifier take care of compression.
 * Use hex color codes, shortening to the shorthand form where possible:
 
@@ -59,6 +59,29 @@ At TFG we have standardised on [SASS’ indented syntax](http://sass-lang.com/do
 ### Pixels vs. Em/Pts
 
 Use `px` for `font-size`, because it offers absolute control over text. Most modern browsers now do full screen zooming rather than text zooming. Additionally, unit-less line-height is preferred because it does not inherit a percentage value of its parent element, but instead is based on a multiplier of the `font-size`.
+
+### Naming Convention
+
+The naming of functions, extends, mixins and variables should match the naming convention of the language they’re written in, so [camelCase](http://en.wikipedia.org/wiki/CamelCase) or [snake_case](http://en.wikipedia.org/wiki/Snake_case) are not ideal for SASS, SCSS, LESS or CSS, instead use `dashed-names` (hyphenated).
+
+  ```sass
+  // good
+  #my-module
+    @extend %base-module
+    color: $base-color
+    +media-retina
+      font-size: convert-to-rem(16px)
+
+  // bad
+  #my_module
+    @extend %base_module
+    color: $baseColor
+    +mediaRetina
+      font-size: convert_to_rem(16px)
+  ```
+
+> *Note:* Only exception - for IDs and Classes - is, when a Gem introduces a certain naming convention for generated content and we have no control over it.
+
 
 ## Directory Structure
 
@@ -139,8 +162,6 @@ The `global/_base.css.sass` file should always exist and define the lowest level
 ## Example Files
 
 ### Variables (`lib/_variables.css.sass`)
-
-Variables should match the naming convention of the language they’re written in, so camelCase is not ideal for SASS, SCSS, LESS or CSS, instead use `$dashed-names`.
 
 At the top of the file, define brand specific variables using the application’s namespace, for example:
 
