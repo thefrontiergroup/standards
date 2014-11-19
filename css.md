@@ -166,30 +166,30 @@ The `global/_base.css.sass` file should always exist and define the lowest level
 At the top of the file, define brand specific variables using the application’s namespace, for example:
 
 ```sass
-$tiinkk-green: green
-$tiinkk-aqua: aqua
+$brand-green: green
+$brand-aqua: aqua
 ```
 
 These brand variables, ideally, shouldn’t be used directly, instead should be assigned to more generic module or use-specific names, for example:
 
 ```sass
-$sidebar-background: $tiinkk-green
+$sidebar-background: $brand-green
 ```
 
 It’s suggested to define visual rhythm / default variables to ensure your application is styled consistently, some examples include; `border-radius`, `margins`, `transition durations`, `font-families` and `font-sizes`.
 
 ```sass
 // Brand Colors
-$tiinkk-deep-blue: #003c78
-$tiinkk-pale-blue: #b7cce0
-$tiinkk-teal: #00a4ee
-$tiinkk-light-blue: #0083bd
+$brand-deep-blue: #003c78
+$brand-pale-blue: #b7cce0
+$brand-teal: #00a4ee
+$brand-light-blue: #0083bd
 
 $footer-background: $dark-grey
 $social-bar-background: lighten($dark-grey, 20%)
 
-$link: $tiinkk-teal
-$link-hover: $tiinkk-light-blue
+$link: $brand-teal
+$link-hover: $brand-light-blue
 
 $text-color: #444
 $quote-color: #888
