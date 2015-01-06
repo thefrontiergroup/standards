@@ -17,11 +17,8 @@ The top level of the JS folder structure should only include files which are dir
 
 Each top level file is responsible for setting up application namespaces, requiring files, and invoking the initialiser at an appropriate time. `init.js` should define a single public method to perform any initialisation logic. Even if there is no logic to be required, this method must be present, and called from the top level file. 
 
-    //---------------
-    //core.js
-    //---------------
-
-    //= require dependencies here
+##core.js
+    // require dependencies here
     
     //= require_self 
     //= require ./core/init
@@ -32,21 +29,14 @@ Each top level file is responsible for setting up application namespaces, requir
     // Delay initalization
     setTimeout(Core.Initialize, 0);
 
-    //---------------
-    //core/init.js
-    //---------------
-
-    //= require files used by initialization here
+  
+##core/init.js
+    // require files used by initialization here
 
     Core.initialize = function() {
     	// Do the magic
     }
-
-
-    //---------------
-    //authenticated.js
-    //---------------
-
+## authenticated.js
     //= require jQuery
     //= require ./core
     
@@ -59,10 +49,7 @@ Each top level file is responsible for setting up application namespaces, requir
     // Delay initalization until document ready
     jQuery(App.initialize)
 
-    //---------------
-    //authenticated/init.js
-    //---------------
-
+## authenticated/init.js
     //= require ./models/some_model
 
     App.initialize = function() {
