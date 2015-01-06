@@ -21,26 +21,53 @@ Each top level file is responsible for setting up application namespaces, requir
     //core.js
     //---------------
 
-    //= require jQuery
-    //= require someLib
-
+    //= require dependencies here
+    
     //= require_self 
     //= require ./core/init
+    //= require_tree ./core
 
     window.Core = {}
-
-    // Initialise on page ready 
-    $(Core.Initialize);
-
+    
+    // Delay initalization
+    setTimeout(Core.Initialize, 0);
 
     //---------------
     //core/init.js
     //---------------
 
-    //= require_tree .
+    //= require files used by initialization here
 
     Core.initialize = function() {
     	// Do the magic
     }
+
+
+    //---------------
+    //authenticated.js
+    //---------------
+
+    //= require jQuery
+    //= require ./core
+    
+    //= require_self 
+    //= require ./authenticated/init
+    //= require_tree ./authenticated
+
+    window.App = {}
+    
+    // Delay initalization until document ready
+    jQuery(App.initialize)
+
+    //---------------
+    //authenticated/init.js
+    //---------------
+
+    //= require ./models/some_model
+
+    App.initialize = function() {
+    	// Do the magic
+    }
+    
 
 Following this basic structure allows the reader to infer that no initialisation is required, and is not left wondering if there is some, but just not here. Additionally, no other files should perform any action without being invoked by the initialiser, or an event handler attached by the former or an initialiser.
