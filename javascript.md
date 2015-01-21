@@ -82,7 +82,7 @@ As a general rule, any `class` or `id` that is used should when interacting with
 
 We want to namespace JavaScript hooks and when using states.
 
-## State namespace
+## State Namespace
 
 A State namespace is used to communicate a change in ‘state’.
 
@@ -98,7 +98,9 @@ The above indicates that on, or somewhere below this node, the ‘form actions�
 
 This would communicate that the component or one within it is currently selected (when it previously wasn't).
 
-**Example 3:**
+## JS Namespace
+
+**Example:**
 
 `.js-countdown`
 
