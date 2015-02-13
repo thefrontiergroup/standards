@@ -17,9 +17,9 @@ Notable rules enforced are:
 
 ## Static Analysis
 
-Currently [FxCop] (https://msdn.microsoft.com/en-us/library/bb429476.aspx) is not used to detect static issues, however a draft settings file can be found in [tooling/cSharp/FxCop.ruleset] (../cSharp/tooling)
+Currently [FxCop] (https://msdn.microsoft.com/en-us/library/bb429476.aspx) is not used to detect static issues, however a draft settings file can be found in [tooling/cSharp/FxCop.ruleset] (/tooling/cSharp)
 
 ## Code Contracts
 
 Code contracts are required for all projects. The enforcment level should be at a minimum of three: 
-![Code Contract Level] (assets/cSharp/codecontractlevel.jpg)
+![Code Contract Level] (/assets/cSharp/CodeContractLevel.jpg)
