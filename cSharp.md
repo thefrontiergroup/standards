@@ -2,7 +2,7 @@
 
 ## Code Style
 
-C# Projects have style enforced by [StyleCop] (https://stylecop.codeplex.com/)
+C# Projects have style enforced by [StyleCop] (https://stylecop.codeplex.com/). These rules are available in [tooling] (/tooling/cSharp) 
 
 Notable rules enforced are:
 
