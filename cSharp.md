@@ -1,4 +1,4 @@
-# C#
+# C\#
 
 ## Code Style
 
@@ -17,9 +17,9 @@ Notable rules enfoced are:
 
 ## Static Analysis
 
-Currently FxCop is not used to detect static issues, however a draft settings file can be found in [c#/tooling/FxCop.ruleset] (c#/tooling)
+Currently FxCop is not used to detect static issues, however a draft settings file can be found in [tooling/cSharp/FxCop.ruleset] (cSharp/tooling)
 
 ## Code Contracts
 
 Code contracts are required for all projects. The enforcment level should be at a minimum of three: 
-![Code Contract Level] (assets/c#/codecontractlevel.jpg)
+![Code Contract Level] (assets/cSharp/codecontractlevel.jpg)
