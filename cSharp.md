@@ -17,7 +17,7 @@ Notable rules enforced are:
 
 ## Static Analysis
 
-Currently [FxCop] (https://msdn.microsoft.com/en-us/library/bb429476.aspx) is not used to detect static issues, however a draft settings file can be found in [tooling/cSharp/FxCop.ruleset] (cSharp/tooling)
+Currently [FxCop] (https://msdn.microsoft.com/en-us/library/bb429476.aspx) is not used to detect static issues, however a draft settings file can be found in [tooling/cSharp/FxCop.ruleset] (../cSharp/tooling)
 
 ## Code Contracts
 
