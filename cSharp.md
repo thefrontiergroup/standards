@@ -7,10 +7,12 @@ C# Projects have style enforced by [StyleCop] (https://stylecop.codeplex.com/). 
 Notable rules enforced are:
 
 * Naming conventions. 
- * Properties are UpperCamelCased
- * Classes and Structs are UpperCamelCased
- * Fields are _underscoreLowerCamelCased
- * Interfaces are UpperCamelCased and prefixed with I  (ISomeInterface)
+ * Classes and Structs are `UpperCamelCased`
+ * Interfaces are `UpperCamelCased` and prefixed with `I`  (`ISomeInterface`) 
+ * Properties are `UpperCamelCased`
+ * Methods are `UpperCamelCased`
+ * Fields are `_underscoreLowerCamelCased`
+ 
  * Members be orederd Static to Instance then Public to Private
 
 * A target must be specifed for all non local access. This means `this` must be used for instance methods / properties / fields, and `SomeClassName` must be specified for static methods.
