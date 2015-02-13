@@ -4,7 +4,7 @@
 
 C# Projects have style enforced by [StyleCop] (https://stylecop.codeplex.com/)
 
-Notable rules enfoced are:
+Notable rules enforced are:
 
 * Naming conventions. 
  * Properties are UpperCamelCased
