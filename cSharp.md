@@ -13,9 +13,14 @@ Notable rules enforced are:
  * Methods are `UpperCamelCased`
  * Fields are `_underscoreLowerCamelCased`
  
- * Members be orederd Static to Instance then Public to Private
+ * Members be ordered Static to Instance then Public to Private
 
-* A target must be specifed for all non local access. This means `this` must be used for instance methods / properties / fields, and `SomeClassName` must be specified for static methods.
+* A target must be specifed for all non local access calls. This means `this` must be used for instance methods / properties / fields, and `SomeClassName` must be specified for static methods.
+
+```c#
+this.DoSomething();
+MyClass.DoSomethingStatic();
+```
 
 ## Static Analysis
 
