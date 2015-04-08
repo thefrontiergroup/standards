@@ -88,7 +88,9 @@ The naming of functions, extends, mixins and variables should match the naming c
 ### File Naming
 All files that are pulled in via `@import` or `= require` should begin with an underscore (`_`) to follow the SASS/Sprockets convention that prevents these files from being included directly. Any file that is included directly with `stylesheet_link_tag` should not have an underscore and should live in the root `app/assets/stylsheets` directory.
 
-SASS file names should end in `.css.sass` to follow the Sprockets naming convention that defines what preprocessors to use in reverse order.
+SASS file names should end in `.sass` or - if necessary - `.sass.erb`.
+
+ > *Note:* `sass-rails` has [dropped support](https://github.com/sstephenson/sprockets/issues/643) of `.css.sass` which follows the [change in Sprockets naming convention](https://github.com/sstephenson/sprockets/commit/da2f1d176de6fae0bafc71e9cbf7805271856933) that defined what preprocessors to use in reverse order.
 
 ### Modules (`modules`)
 Modules are “business logic elements”, like *Posts* or *Users* and usually relate to a Rails Model and not a specific view or page of the application.
@@ -101,34 +103,34 @@ The Libraries directory is for non-output code like mixins, variables and functi
 ### Global (`global`)
 The Global directory is for non-business level styles, that usually relate tightly to HTML elements or layout conventions like, for example: 'header', 'forms', 'footer', 'tables' or 'buttons'.
 
-The `global/_base.css.sass` file should always exist and define the lowest level layout and presentation. For example: `<p>`, `<h1>` to `<h6>`, `<body>` and other common root level classes/elements like `.container`, `.inner`, `.wrapper` etc. This is where the base styling for the application really starts.
+The `global/_base.sass` file should always exist and define the lowest level layout and presentation. For example: `<p>`, `<h1>` to `<h6>`, `<body>` and other common root level classes/elements like `.container`, `.inner`, `.wrapper` etc. This is where the base styling for the application really starts.
 
 
 ## Ideal Directory Structures
 
 ### Single Purpose Applications
 
- > *Note:* For WordPress sites, the only difference is to use `style.css.sass` instead of `application.css.sass` as the root level file. `style.css` is needed for the WordPress theme to be recognised as theme inside the WordPress backend.
+ > *Note:* For WordPress sites, the only difference is to use `style.sass` instead of `application.sass` as the root level file. `style.css` is needed for the WordPress theme to be recognised as theme inside the WordPress backend.
 
 #### Directory Structure
 * `stylesheets`
   * `modules`
-    * `_sidebar.css.sass`
-    * `_search.css.sass`
+    * `_sidebar.sass`
+    * `_search.sass`
   * `global`
-    * `_base.css.sass`
-    * `_table.css.sass`
-    * `_fonts.css.sass`
-    * `_forms.css.sass`
-    * `_buttons.css.sass`
-    * `_header.css.sass`
-    * `_footer.css.sass`
+    * `_base.sass`
+    * `_tables.sass`
+    * `_fonts.sass`
+    * `_forms.sass`
+    * `_buttons.sass`
+    * `_header.sass`
+    * `_footer.sass`
   * `lib`
-    * `_functions.css.sass`
-    * `_variables.css.sass` ([example](#variables-lib_variablessass))
-    * `_mixins.css.sass` ([example](#mixins-lib_mixinssass))
-    * `_extends.css.sass` ([example](#extends-lib_extendssass))
-  * `application.css.sass` ([example](#application-lib_applicationsass))
+    * `_functions.sass`
+    * `_variables.sass` ([example](#variables-lib_variablessass))
+    * `_mixins.sass` ([example](#mixins-lib_mixinssass))
+    * `_extends.sass` ([example](#extends-lib_extendssass))
+  * `application.sass` ([example](#application-lib_applicationsass))
 
 ### Multipurpose Applications
 
@@ -143,17 +145,17 @@ The `global/_base.css.sass` file should always exist and define the lowest level
   * `lib`
   * `global`
   * `modules`
-  * `public.css.sass`
+  * `public.sass`
   * `public`
     * `lib`
     * `global`
     * `modules`
-  * `webapp.css.sass`
+  * `webapp.sass`
   * `webapp`
     * `lib`
     * `global`
     * `modules`
-  * `admin.css.sass`
+  * `admin.sass`
   * `admin`
     * `lib`
     * `global`
@@ -162,7 +164,7 @@ The `global/_base.css.sass` file should always exist and define the lowest level
 
 ## Example Files
 
-### Variables (`lib/_variables.css.sass`)
+### Variables (`lib/_variables.sass`)
 
 At the top of the file, define brand specific variables using the application’s namespace, for example:
 
@@ -213,7 +215,7 @@ $default-radius: 6px
 $default-duration: .25s
 ```
 
-### Application (`application.css.sass`)
+### Application (`application.sass`)
 
 This should ideally be the only file that is included directly via `stylesheet_link_tag`. We also want to define specific order of import for the `lib` files as we may be making use of `_functions.css.sass` in `_variables.css.sass` or `_variables.css.sass` in `_mixins.css.sass`.
 
@@ -241,7 +243,7 @@ This should ideally be the only file that is included directly via `stylesheet_l
 
 3rd party styles should generally **not** be imported before our own app styles. It only takes longer for our own styles to be parsed and take effect in favour for a plugin that may only add styles for an un-common component of the site (ie: modal boxes or datepickers).
 
-### Functions (`lib/_functions.css.sass`)
+### Functions (`lib/_functions.sass`)
 
 ```sass
 @function black($opacity)
@@ -257,7 +259,7 @@ This should ideally be the only file that is included directly via `stylesheet_l
   @return mix($base-black-color, $color, percentage($amount))
 ```
 
-### Mixins (`lib/_mixins.css.sass`)
+### Mixins (`lib/_mixins.sass`)
 
 ```sass
 // Default value set to 1.3 to target Google Nexus 7
@@ -301,7 +303,7 @@ This should ideally be the only file that is included directly via `stylesheet_l
     @content
 ```
 
-### Extends (`lib/_extends.css.sass`)
+### Extends (`lib/_extends.sass`)
 
 ```sass
 %hide-text
