@@ -257,6 +257,11 @@ This should ideally be the only file that is included directly via `stylesheet_l
     background-image: inline-image($filename)
   +background-size(image-width($filename)/2 image-height($filename)/2)
 
+// Usage: +breakpoint("(max-width: 640px)")
+=breakpoint($features)
+  @media #{$features}
+    @content
+
 // hide something from view but not from screenreaders
 =visually-hidden
   border: 0
