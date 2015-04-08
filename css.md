@@ -52,6 +52,18 @@ This style guide focusses primarily on the usage of SASS, which is the standard 
     :font-size 0.3em
   ```
 
+* Top-level numeric calculations should always be wrapped in parentheses
+
+  ```sass
+  // good
+  .foo
+    width: (100% / 3)
+
+  // bad
+  .foo
+    width: 100% / 3
+  ```
+
 ### SASS vs. SCSS
 
 At TFG we have standardised on [SASS’ indented syntax](http://sass-lang.com/docs/yardoc/file.INDENTED_SYNTAX.html) as it is more concise and shares the same indentation sensitive style of [HAML](http://haml.info/). This may be a point of contention as the Rails community and the SASS authors have standardised on the SCSS syntax due to its similarities to CSS and reduced learning curve. We feel we’re smart enough to handle the syntax change and the addition of curly-braces and semicolons provides little-to-no benefit.
@@ -213,6 +225,7 @@ $heading-font: 200 16px/1.3 $title-font-family
 // Defaults
 $default-radius: 6px
 $default-duration: .25s
+$default-vertical-spacing: ($gutter * 2)
 ```
 
 ### Application (`application.sass`)
@@ -273,7 +286,7 @@ This should ideally be the only file that is included directly via `stylesheet_l
   background-image: image-url($filename)
   @if $inline
     background-image: inline-image($filename)
-  +background-size(image-width($filename)/2 image-height($filename)/2)
+  +background-size((image-width($filename)/2) (image-height($filename)/2))
 
 // Usage: +breakpoint("(max-width: 640px)")
 =breakpoint($features)
