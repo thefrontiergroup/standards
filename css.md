@@ -284,11 +284,10 @@ This should ideally be the only file that is included directly via `stylesheet_l
 
 ```sass
 %hide-text
-  color: transparent
-  font-size: 0
+  font: 10px monospace
+  letter-spacing: -10px
   overflow: hidden
-  text-align: left
-  text-indent: -100px
+  text-indent: -500px
   text-shadow: none
 
 %list-reset
