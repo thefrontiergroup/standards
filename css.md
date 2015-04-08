@@ -245,8 +245,9 @@ This should ideally be the only file that is included directly via `stylesheet_l
 ### Mixins (`lib/_mixins.css.sass`)
 
 ```sass
-// Default value set to 1.3 to target Google Nexus 7 (http://bjango.com/articles/min-device-pixel-ratio/)
-=media-retina($ratio: 1.3)
+// Default value set to 1.3 to target Google Nexus 7
+// http://bjango.com/articles/min-device-pixel-ratio/
+=retina($ratio: 1.3)
   @media only screen and (-webkit-min-device-pixel-ratio: $ratio), only screen and (min--moz-device-pixel-ratio: $ratio), only screen and (min-device-pixel-ratio: $ratio)
     @content
 
