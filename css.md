@@ -291,4 +291,9 @@ This should ideally be the only file that is included directly via `stylesheet_l
   text-indent: -100px
   text-shadow: none
 
+%list-reset
+  list-style: none
+  margin: 0
+  padding: 0
+
 ```
