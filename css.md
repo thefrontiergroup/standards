@@ -258,7 +258,7 @@ This should ideally be the only file that is included directly via `stylesheet_l
   +background-size(image-width($filename)/2 image-height($filename)/2)
 
 // hide something from view but not from screenreaders
-=visuallyhidden
+=visually-hidden
   border: 0
   clip: rect(0 0 0 0)
   height: 1px
@@ -295,5 +295,8 @@ This should ideally be the only file that is included directly via `stylesheet_l
   list-style: none
   margin: 0
   padding: 0
+
+%screen-reader
+  +visually-hidden
 
 ```
