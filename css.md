@@ -159,6 +159,7 @@ The `global/_base.css.sass` file should always exist and define the lowest level
     * `global`
     * `modules`
 
+
 ## Example Files
 
 ### Variables (`lib/_variables.css.sass`)
@@ -241,7 +242,6 @@ This should ideally be the only file that is included directly via `stylesheet_l
   @return mix(#000, $color, percentage($amount))
 ```
 
-
 ### Mixins (`lib/_mixins.css.sass`)
 
 ```sass
@@ -279,7 +279,6 @@ This should ideally be the only file that is included directly via `stylesheet_l
   \:-ms-input-placeholder
     @content
 ```
-
 
 ### Extends (`lib/_extends.css.sass`)
 
