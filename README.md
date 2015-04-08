@@ -7,6 +7,6 @@ The standards to which code produced by The Frontier Group complies. Plus use pu
 * [Ruby](ruby.md)
 * [RubyMotion](rubymotion.md)
 * [CSS](css.md)
-* [C#] (cSharp.md)
+* [C#](cSharp.md)
 * [HTML](html.md)
-* JavaScript (wanted)
+* [JavaScript](javascript.md)
