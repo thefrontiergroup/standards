@@ -230,12 +230,16 @@ $default-vertical-spacing: ($gutter * 2)
 
 ### Application (`application.sass`)
 
-This should ideally be the only file that is included directly via `stylesheet_link_tag`. We also want to define specific order of import for the `lib` files as we may be making use of `_functions.css.sass` in `_variables.css.sass` or `_variables.css.sass` in `_mixins.css.sass`.
+This should ideally be the only file that is included directly via `stylesheet_link_tag`. We also want to define specific order of import for the `lib` files as we may be making use of `_functions.sass` in `_variables.sass` or `_variables.sass` in `_mixins.sass`.
 
 > Note that SASS `@import` does not require the explicit use of underscores for filenames. Also be sure to use `@import "folder/**/*"` to import all files and folders under a particular directory.
 
 ```sass
-@import "compass", "compass/reset"
+// To "reset" browser-styles we either use
+@import "normalize-rails"
+// or
+@import "compass"
+@import "compass/reset"
 
 /*!
  * Author:       The Frontier Group
@@ -251,6 +255,13 @@ This should ideally be the only file that is included directly via `stylesheet_l
 // Vendor styles
 //@import "vendor-style"
 ```
+
+#### Compass Reset vs. Normalize.css
+
+Over time we have started using [Normalize.css](https://github.com/necolas/normalize.css/) which is a much saner way of "resetting" browser-default styles. Compass Reset is based on the [Meyer's CSS Reset (made in 2008)](http://meyerweb.com/eric/tools/css/reset/) which literally blows away all styles no matter what. This forces us to redefine every element again and chances that something falls through the cracks is big if not huge.
+
+* Compass requires the [`compass-rails`](https://github.com/compass/compass-rails) gem.
+* Normalize.css requires the [`normalize-rails`](https://github.com/markmcconachie/normalize-rails) gem.
 
 #### Vendor styles
 
