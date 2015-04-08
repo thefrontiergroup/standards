@@ -291,9 +291,4 @@ This should ideally be the only file that is included directly via `stylesheet_l
   text-indent: -100px
   text-shadow: none
 
-%sprites
-  background-image: image-url("sprites.png")
-  background-repeat: no-repeat
-  html.svg &
-    background-image: image-url("sprites.svg")
 ```
