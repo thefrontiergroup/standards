@@ -181,10 +181,12 @@ It’s suggested to define visual rhythm / default variables to ensure your appl
 
 ```sass
 // Brand Colors
+$brand-black: #333
 $brand-deep-blue: #003c78
 $brand-pale-blue: #b7cce0
 $brand-teal: #00a4ee
 $brand-light-blue: #0083bd
+$brand-dark-blue: blacken($brand-deep-blue)
 
 $footer-background: $dark-grey
 $social-bar-background: lighten($dark-grey, 20%)
@@ -238,8 +240,8 @@ This should ideally be the only file that is included directly via `stylesheet_l
 @function whiten($color, $amount: 0.5)
   @return mix(#fff, $color, percentage($amount))
 
-@function blacken($color, $amount: 0.5)
-  @return mix(#000, $color, percentage($amount))
+@function blacken($color, $amount: 0.5, $base-black-color: $brand-black)
+  @return mix($base-black-color, $color, percentage($amount))
 ```
 
 ### Mixins (`lib/_mixins.css.sass`)
