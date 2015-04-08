@@ -192,7 +192,7 @@ These brand variables, ideally, shouldn’t be used directly, instead should be 
 $sidebar-background: $brand-green
 ```
 
-It’s suggested to define visual rhythm / default variables to ensure your application is styled consistently, some examples include; `border-radius`, `margins`, `transition durations`, `font-families` and `font-sizes`.
+It’s suggested to define visual rhythm / default variables to ensure your application is styled consistently, some examples include; `border-radius`, `margin`, `transition-duration`, `font-family` and `font-size`.
 
 ```sass
 // Brand Colors
