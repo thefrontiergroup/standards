@@ -26,6 +26,7 @@ This style guide focusses primarily on the usage of SASS, which is the standard 
 
 * Use two **spaces** per indentation level. No hard tabs.
 * Use one space after `:` in property declarations.
+* Use double quotes `"` in attribute values.
 * Use spaces after comma separated values, let the minifier take care of compression.
 * Use hex color codes, shortening to the shorthand form where possible:
 
