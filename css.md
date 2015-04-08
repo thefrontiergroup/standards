@@ -299,4 +299,9 @@ This should ideally be the only file that is included directly via `stylesheet_l
 %screen-reader
   +visually-hidden
 
+%clearfix
+  &:after
+    clear: both
+    content: ""
+    display: table
 ```
