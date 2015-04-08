@@ -212,6 +212,8 @@ $text-color: #444
 $quote-color: #888
 $text-header: #242a30
 
+$gutter: 15px
+
 $confirmation-background: #22343434
 $confirmation-border: darken($confirmation-background, 20%)
 $confirmation-text: darken($confirmation-background, 30%)
