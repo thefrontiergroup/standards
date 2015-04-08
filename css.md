@@ -92,7 +92,7 @@ The naming of functions, extends, mixins and variables should match the naming c
       font-size: convert_to_rem(16px)
   ```
 
-> *Note:* Only exception - for IDs and Classes - is, when a Gem introduces a certain naming convention for generated content and we have no control over it.
+ > *Note:* Only exception - for IDs and Classes - is, when a Gem introduces a certain naming convention for generated content and we have no control over it.
 
 
 ## Directory Structure
@@ -232,7 +232,7 @@ $default-vertical-spacing: ($gutter * 2)
 
 This should ideally be the only file that is included directly via `stylesheet_link_tag`. We also want to define specific order of import for the `lib` files as we may be making use of `_functions.sass` in `_variables.sass` or `_variables.sass` in `_mixins.sass`.
 
-> Note that SASS `@import` does not require the explicit use of underscores for filenames. Also be sure to use `@import "folder/**/*"` to import all files and folders under a particular directory.
+ > *Note:* SASS `@import` does not require the explicit use of underscores for filenames. Also be sure to use `@import "folder/**/*"` to import all files and folders under a particular directory.
 
 ```sass
 // To "reset" browser-styles we either use
