@@ -222,11 +222,24 @@ This should ideally be the only file that is included directly via `stylesheet_l
 ```sass
 @import "compass", "compass/reset"
 
+/*!
+ * Author:       The Frontier Group
+ * Author URI:   http://www.thefrontiergroup.com.au/
+ */
+
+// Application styles
 @import "lib/functions", "lib/variables", "lib/mixins", "lib/extends"
 
 @import "global/**/*"
 @import "modules/**/*"
+
+// Vendor styles
+//@import "vendor-style"
 ```
+
+#### Vendor styles
+
+3rd party styles should generally **not** be imported before our own app styles. It only takes longer for our own styles to be parsed and take effect in favour for a plugin that may only add styles for an un-common component of the site (ie: modal boxes or datepickers).
 
 ### Functions (`lib/_functions.css.sass`)
 
