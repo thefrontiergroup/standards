@@ -103,7 +103,7 @@ All files that are pulled in via `@import` or `= require` should begin with an u
 
 SASS file names should end in `.sass` or - if necessary - `.sass.erb`.
 
- > *Note:* `sass-rails` has [dropped support](https://github.com/sstephenson/sprockets/issues/643) of `.css.sass` which follows the [change in Sprockets naming convention](https://github.com/sstephenson/sprockets/commit/da2f1d176de6fae0bafc71e9cbf7805271856933) that defined what preprocessors to use in reverse order.
+ > *Note:* `sprockets` has [dropped support](https://github.com/sstephenson/sprockets/issues/643) of the `.css.sass` naming convention that defined what preprocessors to use in reverse order.
 
 ### Modules (`modules`)
 Modules are “business logic elements”, like *Posts* or *Users* and usually relate to a Rails Model and not a specific view or page of the application.
