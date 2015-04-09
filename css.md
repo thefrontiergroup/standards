@@ -53,7 +53,7 @@ This style guide focusses primarily on the usage of SASS, which is the standard 
     :font-size 0.3em
   ```
 
-* Top-level numeric calculations should always be wrapped in parentheses
+* Top-level numeric calculations should always be wrapped in parentheses. As suggested by [Sass Guidelines](http://sass-guidelin.es/#calculations).
 
   ```sass
   // good
