@@ -58,11 +58,11 @@ This style guide focusses primarily on the usage of SASS, which is the standard 
   ```sass
   // good
   .foo
-    width: (12px / 1.5) //  => width: 8px
+    width: (12px / 1.5) // => width: 8px
 
   // bad
   .foo
-    width: 12px / 1.5 // => width: 12px/1.5
+    width: 12px / 1.5   // => width: 12px/1.5
   ```
 
 ### SASS vs. SCSS
@@ -263,8 +263,8 @@ This should ideally be the only file that is included directly via `stylesheet_l
 
 Over time we have started using [Normalize.css](https://github.com/necolas/normalize.css/) which is a much saner way of "resetting" browser-default styles. Compass Reset is based on the [Meyer's CSS Reset (made in 2008)](http://meyerweb.com/eric/tools/css/reset/) which literally blows away all styles no matter what. This forces us to redefine every element again and chances that something falls through the cracks is big if not huge.
 
-* Compass requires the [`compass-rails`](https://github.com/compass/compass-rails) gem.
-* Normalize.css requires the [`normalize-rails`](https://github.com/markmcconachie/normalize-rails) gem.
+* Compass requires the [**compass-rails**](https://github.com/compass/compass-rails) gem.
+* Normalize.css requires the [**normalize-rails**](https://github.com/markmcconachie/normalize-rails) gem.
 
 #### Vendor styles
 
