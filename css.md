@@ -53,16 +53,16 @@ This style guide focusses primarily on the usage of SASS, which is the standard 
     :font-size 0.3em
   ```
 
-* Top-level numeric calculations should always be wrapped in parentheses. As suggested by [Sass Guidelines](http://sass-guidelin.es/#calculations).
+* Top-level numeric calculations should always be wrapped in parentheses. As suggested by [Sass Guidelines](http://sass-guidelin.es/#calculations) as it forces Sass to evaluate the contents of the parentheses.
 
   ```sass
   // good
   .foo
-    width: (100% / 3)
+    width: (12px / 1.5) //  => width: 8px
 
   // bad
   .foo
-    width: 100% / 3
+    width: 12px / 1.5 // => width: 12px/1.5
   ```
 
 ### SASS vs. SCSS
