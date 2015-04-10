@@ -11,10 +11,31 @@ We use HAML at The Frontier Group, ERB is only acceptable for mailers, plain tex
 * Use HAML (`-#`) instead of HTML (`/`) comments (exception for conditional comments like below)
 * Use Rails TagHelpers like `image_tag` instead of `%img`
 
+## HAML Initializer
+
+To get more control over HTML doctypes, the default HAML format needs to be set to `:xhtml`.
+This allows us to use the XHTML 1.0 Transitional doctype for email layouts and HTML5 for everything else.
+
+**Meaning:**
+* Email templates doctype: `!!!`
+* Any other layout: `!!! 5`
+
+### Adding the initializer to your project
+
+Copy & paste the following line into `/config/initializers/haml.rb`.
+
+```ruby
+Haml::Template.options[:format] = :xhtml
+```
+
+**Related links:**
+* About `doctype` in the [HAML Docs](http://haml.info/docs/yardoc/file.REFERENCE.html#doctype_)
+* Article ["Correct doctype to use in HTML Emails"](https://www.campaignmonitor.com/blog/post/3317/correct-doctype-to-use-in-html-email/) by Campaign Monitor
+
 ## The `<html>` tag
 
 ```haml
-!!!5
+!!! 5
 /[if IE 8]<html class="no-js lt-ie9" lang="en">
 /[if IE 9]<html class="no-js lt-ie10" lang="en">
 /[if lt IE 10]<html class="no-js lt-ie10" lang="en-us">
@@ -23,7 +44,7 @@ We use HAML at The Frontier Group, ERB is only acceptable for mailers, plain tex
   <!--<![endif]-->
 ```
 
-Unfortunately for us, IE is still relevant and we should always be using this `<html>` setup for **all** sites and apps (except for admin/backend areas).
+Unfortunately for us, IE is still relevant and we should always be using this `<html>` setup for **all** sites and apps (exception: admin/backend areas).
 
 ## Meta rules
 
