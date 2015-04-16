@@ -250,6 +250,8 @@ This should ideally be the only file that is included directly via `stylesheet_l
  */
 
 // Application styles
+
+// Do not change the order of the lib files import - see standard/css.
 @import "lib/functions", "lib/variables", "lib/mixins", "lib/extends"
 
 @import "global/**/*"
