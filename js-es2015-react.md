@@ -1,0 +1,169 @@
+# Tooling
+
+For projects that use ES2015, we use:
+
+- eslint
+- eslint-plugin-react
+
+To lint our javascript files.
+
+# Ignores
+
+The `.eslintignore` file contains only `node_modules` and whatever project specific folders as required.
+
+# Styleguide
+
+General points:
+
+- Classes are PascalCased
+- Functions are camelCased
+- React Props and States are PascalCased
+- Spaces, not tabs
+- Promises are indented
+
+```
+Promise
+    .then(()=>{})
+    .catch(()=>{})
+```
+
+
+
+# Rules
+
+## Recommended
+These are automatically included when you extend `eslint:recommended` in your `.eslintrc`.
+
+The recommended rules are:
+```
+comma-dangle - disallow or enforce trailing commas (recommended)
+no-cond-assign - disallow assignment in conditional expressions (recommended)
+no-console - disallow use of console in the node environment (recommended)
+no-constant-condition - disallow use of constant expressions in conditions (recommended)
+no-control-regex - disallow control characters in regular expressions (recommended)
+no-debugger - disallow use of debugger (recommended)
+no-dupe-args - disallow duplicate arguments in functions (recommended)
+no-dupe-keys - disallow duplicate keys when creating object literals (recommended)
+no-duplicate-case - disallow a duplicate case label. (recommended)
+no-empty-character-class - disallow the use of empty character classes in regular expressions (recommended)
+no-empty - disallow empty statements (recommended)
+no-ex-assign - disallow assigning to the exception in a catch block (recommended)
+no-extra-boolean-cast - disallow double-negation boolean casts in a boolean context (recommended)
+no-extra-semi - disallow unnecessary semicolons (recommended) (fixable)
+no-func-assign - disallow overwriting functions written as function declarations (recommended)
+no-inner-declarations - disallow function or variable declarations in nested blocks (recommended)
+no-invalid-regexp - disallow invalid regular expression strings in the RegExp constructor (recommended)
+no-irregular-whitespace - disallow irregular whitespace outside of strings and comments (recommended)
+no-negated-in-lhs - disallow negation of the left operand of an in expression (recommended)
+no-obj-calls - disallow the use of object properties of the global object (Math and JSON) as functions (recommended)
+no-regex-spaces - disallow multiple spaces in a regular expression literal (recommended)
+no-sparse-arrays - disallow sparse arrays (recommended)
+no-unreachable - disallow unreachable statements after a return, throw, continue, or break statement (recommended)
+use-isnan - disallow comparisons with the value NaN (recommended)
+valid-typeof - Ensure that the results of typeof are compared against a valid string (recommended)
+no-fallthrough - disallow fallthrough of case statements (recommended)
+no-octal - disallow use of octal literals (recommended)
+no-redeclare - disallow declaring the same variable more than once (recommended)
+no-delete-var - disallow deletion of variables (recommended)
+no-undef - disallow use of undeclared variables unless mentioned in a /*global */ block (recommended)
+no-unused-vars - disallow declaration of variables that are not used in the code (recommended)
+no-mixed-spaces-and-tabs - disallow mixed spaces and tabs for indentation (recommended)
+```
+
+The additional (not included in recommended) rules are:
+```
+"space-after-keywords": 1,
+"prefer-const": 1,
+"no-console": 1,
+"indent": [2, 2, {
+  "SwitchCase": 1
+  }
+],
+"quotes": [2, "single"],
+"linebreak-style": [2, "unix"],
+"semi": [2, "always"]
+```
+
+## React Rules
+
+The following React rules used are:
+
+```
+"react/jsx-curly-spacing": 1,
+"react/jsx-indent-props": [2, 2],
+"react/jsx-no-duplicate-props": 1,
+"react/jsx-no-undef": 1,
+"react/jsx-sort-prop-types": 1,
+"react/jsx-sort-props": 1,
+"react/jsx-uses-react": 1,
+"react/jsx-uses-vars": 1,
+"react/no-did-mount-set-state": 1,
+"react/no-did-update-set-state": 1,
+"react/no-multi-comp": 1,
+"react/no-unknown-property": 1,
+"react/react-in-jsx-scope": 1,
+"react/require-extension": 1,
+"react/self-closing-comp": 1,
+"react/sort-comp": 1,
+"react/wrap-multilines": 1,
+```
+
+# Sample Configuration
+
+Sample `.eslintignore` file:
+
+```
+node_modules
+```
+
+Sample `.eslintrc` file:
+
+```
+{
+  "parser": "babel-eslint",
+  "ecmaFeatures": {
+    "ecmascript": 6,
+    "blockBindings": true,
+    "modules": true,
+    "classes": true
+  },
+  "plugins": ["react"],
+  "ext": [".js", ".jsx"],
+  "rules": {
+    "react/jsx-curly-spacing": 1,
+    "react/jsx-indent-props": [2, 2],
+    "react/jsx-no-duplicate-props": 1,
+    "react/jsx-no-undef": 1,
+    "react/jsx-sort-prop-types": 1,
+    "react/jsx-sort-props": 1,
+    "react/jsx-uses-react": 1,
+    "react/jsx-uses-vars": 1,
+    "react/no-did-mount-set-state": 1,
+    "react/no-did-update-set-state": 1,
+    "react/no-multi-comp": 1,
+    "react/no-unknown-property": 1,
+    "react/react-in-jsx-scope": 1,
+    "react/require-extension": 1,
+    "react/self-closing-comp": 1,
+    "react/sort-comp": 1,
+    "react/wrap-multilines": 1,
+    "jsx-quotes": [1, "prefer-single"],
+    "space-after-keywords": 1,
+    "prefer-const": 1,
+    "no-console": 1,
+    "indent": [2, 2, {
+      "SwitchCase": 1
+      }
+    ],
+    "quotes": [2, "single"],
+    "linebreak-style": [2, "unix"],
+    "semi": [2, "always"]
+  },
+  "env": {
+    "es6": true,
+    "node": true,
+    "mocha": true
+  },
+  "extends": "eslint:recommended"
+}
+```
