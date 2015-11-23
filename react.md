@@ -22,11 +22,11 @@ General points:
 - Multiline props to be indented 2 spaces
 ```
 <Component
-	AProp={this.handleAProp}
-	BProp={this.handleBProp}
-	CProp={this.handleCProp}
-	DProp={this.handleDProp}
-	EProp={this.handleEProp}>
+  AProp={this.handleAProp}
+  BProp={this.handleBProp}
+  CProp={this.handleCProp}
+  DProp={this.handleDProp}
+  EProp={this.handleEProp}>
 </Component>
 ```
 
@@ -34,13 +34,13 @@ General points:
 
 ```
 webpack
-	└── App
-		└── Actions
-		└── Stores
-		└── Components
-		└── Constants
-		└── Sources
-		└── Utils
+  └── App
+    └── Actions
+    └── Stores
+    └── Components
+    └── Constants
+    └── Sources
+    └── Utils
 ```
 
 # Class Structure
@@ -49,18 +49,18 @@ webpack
 
 ```
 export default class NewComponent extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {};
-	}
-	componentWillMount() {...}
-	componentDidMount() {...}
-	componentWillReceiveProps(nextProps, nextContext) {...}
-	shouldComponentUpdate(nextProps, nextState, nextContext) {...}
-	componentWillUpdate(nextProps, nextState, nextContext) {...}
-	componentDidUpdate(prevProps, prevState, prevContext) {...}
-	componentWillUnmount() {...}
-	render() {...}
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  componentWillMount() {...}
+  componentDidMount() {...}
+  componentWillReceiveProps(nextProps, nextContext) {...}
+  shouldComponentUpdate(nextProps, nextState, nextContext) {...}
+  componentWillUpdate(nextProps, nextState, nextContext) {...}
+  componentDidUpdate(prevProps, prevState, prevContext) {...}
+  componentWillUnmount() {...}
+  render() {...}
 }
 
 NewComponent.propTypes = {...};
@@ -74,24 +74,24 @@ Components with custom methods are to be placed after lifecycle methods, with th
 
 ```
 export default class NewComponent extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {...};
-	}
-	componentWillMount() {...}
-	componentDidMount() {...}
-	componentWillReceiveProps(nextProps, nextContext) {...}
-	shouldComponentUpdate(nextProps, nextState, nextContext) {...}
-	componentWillUpdate(nextProps, nextState, nextContext) {...}
-	componentDidUpdate(prevProps, prevState, prevContext) {...}
-	componentWillUnmount() {...}
+  constructor(props) {
+    super(props);
+    this.state = {...};
+  }
+  componentWillMount() {...}
+  componentDidMount() {...}
+  componentWillReceiveProps(nextProps, nextContext) {...}
+  shouldComponentUpdate(nextProps, nextState, nextContext) {...}
+  componentWillUpdate(nextProps, nextState, nextContext) {...}
+  componentDidUpdate(prevProps, prevState, prevContext) {...}
+  componentWillUnmount() {...}
 
-	/* custom methods */
+  /* custom methods */
 
-	handleXyz() {...}
-	doSomething() {...}
+  handleXyz() {...}
+  doSomething() {...}
 
-	render() {...}
+  render() {...}
 }
 
 NewComponent.propTypes = {...};
