@@ -5,7 +5,7 @@ For projects that use ES2015, we use:
 - eslint
 - eslint-plugin-react
 
-To lint our javascript files.
+To lint our JavaScript files.
 
 # Ignores
 
@@ -17,8 +17,9 @@ General points:
 
 - Classes are PascalCased
 - Functions are camelCased
-- React Props and States are PascalCased
+- React Props and States are camelCased
 - Spaces, not tabs
+- Use propTypes where practicable
 - Promises are indented
 
 ```
@@ -28,6 +29,18 @@ Promise
 ```
 
 
+# Folder Structure
+## React
+```
+webpack
+    └── App
+        └── Actions
+        └── Stores
+        └── Components
+        └── Constants
+        └── Sources
+        └── Utils
+```
 
 # Rules
 
@@ -74,7 +87,6 @@ The additional (not included in recommended) rules are:
 ```
 "space-after-keywords": 1,
 "prefer-const": 1,
-"no-console": 1,
 "indent": [2, 2, {
   "SwitchCase": 1
   }
@@ -110,60 +122,5 @@ The following React rules used are:
 
 # Sample Configuration
 
-Sample `.eslintignore` file:
-
-```
-node_modules
-```
-
-Sample `.eslintrc` file:
-
-```
-{
-  "parser": "babel-eslint",
-  "ecmaFeatures": {
-    "ecmascript": 6,
-    "blockBindings": true,
-    "modules": true,
-    "classes": true
-  },
-  "plugins": ["react"],
-  "ext": [".js", ".jsx"],
-  "rules": {
-    "react/jsx-curly-spacing": 1,
-    "react/jsx-indent-props": [2, 2],
-    "react/jsx-no-duplicate-props": 1,
-    "react/jsx-no-undef": 1,
-    "react/jsx-sort-prop-types": 1,
-    "react/jsx-sort-props": 1,
-    "react/jsx-uses-react": 1,
-    "react/jsx-uses-vars": 1,
-    "react/no-did-mount-set-state": 1,
-    "react/no-did-update-set-state": 1,
-    "react/no-multi-comp": 1,
-    "react/no-unknown-property": 1,
-    "react/react-in-jsx-scope": 1,
-    "react/require-extension": 1,
-    "react/self-closing-comp": 1,
-    "react/sort-comp": 1,
-    "react/wrap-multilines": 1,
-    "jsx-quotes": [1, "prefer-single"],
-    "space-after-keywords": 1,
-    "prefer-const": 1,
-    "no-console": 1,
-    "indent": [2, 2, {
-      "SwitchCase": 1
-      }
-    ],
-    "quotes": [2, "single"],
-    "linebreak-style": [2, "unix"],
-    "semi": [2, "always"]
-  },
-  "env": {
-    "es6": true,
-    "node": true,
-    "mocha": true
-  },
-  "extends": "eslint:recommended"
-}
-```
+- Example [.eslintrc](examples/.eslintrc)
+- Example [.eslintignore](examples/.eslintignore)
