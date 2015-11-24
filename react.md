@@ -17,16 +17,16 @@ General points:
 - React Props and States are camelCased
 - Use propTypes where practicable
 - Single line JSX to have parentheses
-- Multiline props when more than 5 props are in a component
-- Multiline props to be in alphabetical order
+- Props on multiple lines when line width is greater than 100 characters
+- Props on multiple lines to be in alphabetical order
 - Multiline props to be indented 2 spaces
 ```
 <Component
-  AProp={this.handleAProp}
-  BProp={this.handleBProp}
-  CProp={this.handleCProp}
-  DProp={this.handleDProp}
-  EProp={this.handleEProp}>
+  aProp={this.handleAProp}
+  bProp={this.handleBProp}
+  cProp={this.handleCProp}
+  dProp={this.handleDProp}
+  eProp={this.handleEProp}>
 </Component>
 ```
 

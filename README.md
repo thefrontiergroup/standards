@@ -10,10 +10,11 @@ The standards to which code produced by The Frontier Group complies. Plus use pu
 * [C#](cSharp.md)
 * [HTML](html.md)
 * JavaScript (wanted)
-* [ES2015/JSX](js-es2015-react.md)
+* [ES2015](es2015.md)
+* [React/JSX](react.md)
 
 # General
-The code editor shall have the following settings.
+The code editor shall have the following settings:
 - Newline at end of file
 - No trailing whitespace
 
