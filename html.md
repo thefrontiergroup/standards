@@ -10,6 +10,7 @@ We use Haml at The Frontier Group, ERB is only acceptable for mailers, plain tex
 * Use only lowercase code
 * Use Haml (`-#`) instead of HTML (`/`) comments (exception for conditional comments see below)
 * Use Rails TagHelpers like `image_tag` instead of `%img`
+* Use multiline declarations when calling Ruby methods, declaring data structures or adding lots of HTML attributes. As long as each line but the last ends with a comma. See [Haml docs about Inserting Ruby](http://haml.info/docs/yardoc/file.REFERENCE.html#inserting_ruby_)
 
 ## Haml Initializer
 
