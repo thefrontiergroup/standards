@@ -1,6 +1,20 @@
-# Haml
+# HTML / Haml
 
 We use Haml at The Frontier Group, ERB is only acceptable for mailers, plain text and non-HTML rendering.
+
+## Table of Contents
+
+* [Syntax](#syntax)
+* [Haml Initializer](#haml-initializer)
+    * [Adding the initializer to your project](#adding-the-initializer-to-your-project)
+* [The HTML Tag](#the-html-tag)
+* [Meta rules](#meta-rules)
+* [Modernizr](#modernizr)
+* [Semantics](#semantics)
+  * [Use HTML according to its purpose](#use-html-according-to-its-purpose)
+  * [Provide alternative contents for images](#provide-alternative-contents-for-images)
+    * [Image titles](#image-titles)
+  * [Use meaningful or generic ID and Class names](#use-meaningful-or-generic-id-and-class-names)
 
 ## Syntax
 
@@ -10,7 +24,7 @@ We use Haml at The Frontier Group, ERB is only acceptable for mailers, plain tex
 * Use only lowercase code
 * Use Haml (`-#`) instead of HTML (`/`) comments (exception for conditional comments see below)
 * Use Rails TagHelpers like `image_tag` instead of `%img`
-* Use multiline declarations when calling Ruby methods, declaring data structures or adding lots of HTML attributes. As long as each line but the last ends with a comma. See [Haml docs about Inserting Ruby](http://haml.info/docs/yardoc/file.REFERENCE.html#inserting_ruby_)
+* Use multiline declarations when calling Ruby methods, declaring data structures or adding lots of HTML attributes. As long as each line but the last ends with a comma. See [Haml docs about Inserting Ruby](http://haml.info/docs/yardoc/file.REFERENCE.html#inserting_ruby_).
 
 ## Haml Initializer
 
@@ -57,7 +71,7 @@ Make sure to specify the encoding in the HTML templates and documents right befo
 
 ## Modernizr
 
-When using Modernizr, be sure to [**custom build**](http://modernizr.com/download/) it per application and un-check unnecessary tests and the html5shiv. We should only be seeing a handful of (necessary) tests on any given app.
+When using Modernizr, be sure to [**custom build**](http://modernizr.com/download/) it per application and un-check unnecessary tests and the html5shiv. We should only be seeing a handful of (necessary) tests in any given app.
 
 In case html5shiv is required for older versions of IE, don't add it to Modernizr. Use a conditional comment and load it from a CDN:
 
