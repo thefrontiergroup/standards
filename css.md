@@ -1,7 +1,12 @@
+# CSS / Sass
+
+This style guide focusses primarily on the usage of Sass, which is the standard at The Frontier Group. Due to similarities in syntax, many of these rules will also apply to vanilla CSS.
+
 ## Table of Contents
 
 * [Syntax](#syntax)
-  * [SASS vs. SCSS](#sass-vs-scss)
+  * [Sass vs. SCSS](#sass-vs-scss)
+    * [Maps](#maps)
   * [Pixels vs. Em/Pts](#pixels-vs-empts)
 * [Directory Structure](#directory-structure)
   * [File Naming](#file-naming)
@@ -12,15 +17,11 @@
   * [Single Purpose Applications](#single-purpose-applications)
   * [Multipurpose Applications](#multipurpose-applications)
 * [Example Files](#example-files)
-  * [Variables](#variables-lib_variablescsssass)
-  * [Application](#application-applicationcsssass)
-  * [Functions](#functions-lib_functionscsssass)
-  * [Mixins](#mixins-lib_mixinscsssass)
-  * [Extends](#extends-lib_extendscsssass)
-
-# CSS / SASS
-
-This style guide focusses primarily on the usage of SASS, which is the standard at The Frontier Group. Due to similarities in syntax, many of these rules will also apply to vanilla CSS.
+  * [Variables](#variables-lib_variablessass)
+  * [Application](#application-applicationsass)
+  * [Functions](#functions-lib_functionssass)
+  * [Mixins](#mixins-lib_mixinssass)
+  * [Extends](#extends-lib_extendssass)
 
 ## Syntax
 
@@ -37,8 +38,8 @@ This style guide focusses primarily on the usage of SASS, which is the standard 
     color: #012 // best
   ```
 
-* Leverage [SASS color functions](http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html) to make your life easier, for example `rgba()` can take hex values; `rgba(#666, 0.5)` will result in `rgba(102, 102, 102, 0.5)`
-* Define your own SASS functions for commonly used operations.
+* Leverage [Sass color functions](http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html) to make your life easier, for example `rgba()` can take hex values; `rgba(#666, 0.5)` will result in `rgba(102, 102, 102, 0.5)`
+* Define your own Sass functions for commonly used operations.
 * Don't use the Property Syntax (`:property_syntax`)
 
   ```sass
@@ -65,9 +66,15 @@ This style guide focusses primarily on the usage of SASS, which is the standard 
     width: 12px / 1.5   // => width: 12px/1.5
   ```
 
-### SASS vs. SCSS
+### Sass vs. SCSS
 
-At TFG we have standardised on [SASS’ indented syntax](http://sass-lang.com/docs/yardoc/file.INDENTED_SYNTAX.html) as it is more concise and shares the same indentation sensitive style of [HAML](http://haml.info/). This may be a point of contention as the Rails community and the SASS authors have standardised on the SCSS syntax due to its similarities to CSS and reduced learning curve. We feel we’re smart enough to handle the syntax change and the addition of curly-braces and semicolons provides little-to-no benefit.
+At TFG we have standardised on [Sass’ indented syntax](http://sass-lang.com/docs/yardoc/file.INDENTED_SYNTAX.html) as it is more concise and shares the same indentation sensitive style of [Haml](http://haml.info/). This may be a point of contention as the Rails community and the Sass authors have standardised on the SCSS syntax due to its similarities to CSS and reduced learning curve. We feel we’re smart enough to handle the syntax change and the addition of curly-braces and semicolons provides little-to-no benefit.
+
+Only exception: see [Maps](#maps)
+
+#### Maps
+
+https://github.com/sass/sass/issues/216
 
 ### Pixels vs. Em/Pts
 
@@ -75,7 +82,7 @@ Use `px` for `font-size`, because it offers absolute control over text. Most mod
 
 ### Naming Convention
 
-The naming of functions, extends, mixins and variables should match the naming convention of the language they’re written in, so [camelCase](http://en.wikipedia.org/wiki/CamelCase) or [snake_case](http://en.wikipedia.org/wiki/Snake_case) are not ideal for SASS, SCSS, LESS or CSS, instead use `dashed-names` (hyphenated).
+The naming of functions, extends, mixins and variables should match the naming convention of the language they’re written in, so [camelCase](http://en.wikipedia.org/wiki/CamelCase) or [snake_case](http://en.wikipedia.org/wiki/Snake_case) are not ideal for Sass, SCSS, LESS or CSS, instead use `dashed-names` (hyphenated).
 
   ```sass
   // good
@@ -99,9 +106,9 @@ The naming of functions, extends, mixins and variables should match the naming c
 ## Directory Structure
 
 ### File Naming
-All files that are pulled in via `@import` or `= require` should begin with an underscore (`_`) to follow the SASS/Sprockets convention that prevents these files from being included directly. Any file that is included directly with `stylesheet_link_tag` should not have an underscore and should live in the root `app/assets/stylsheets` directory.
+All files that are pulled in via `@import` or `= require` should begin with an underscore (`_`) to follow the Sass/Sprockets convention that prevents these files from being included directly. Any file that is included directly with `stylesheet_link_tag` should not have an underscore and should live in the root `app/assets/stylsheets` directory.
 
-SASS file names should end in `.sass` or - if necessary - `.sass.erb`.
+Sass file names should end in `.sass` or - if necessary - `.sass.erb`.
 
  > *Note:* `sprockets` has [dropped support](https://github.com/sstephenson/sprockets/issues/643) of the `.css.sass` naming convention that defined what preprocessors to use in reverse order.
 
@@ -235,7 +242,7 @@ $default-vertical-spacing: ($gutter * 2)
 
 This should ideally be the only file that is included directly via `stylesheet_link_tag`. We also want to define specific order of import for the `lib` files as we may be making use of `_functions.sass` in `_variables.sass` or `_variables.sass` in `_mixins.sass`.
 
- > *Note:* SASS `@import` does not require the explicit use of underscores for filenames. Also be sure to use `@import "folder/**/*"` to import all files and folders under a particular directory.
+ > *Note:* Sass `@import` does not require the explicit use of underscores for filenames. Also be sure to use `@import "folder/**/*"` to import all files and folders under a particular directory.
 
 ```sass
 // To "reset" browser-styles we either use
