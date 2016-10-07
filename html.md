@@ -1,6 +1,20 @@
-# HAML
+# HTML / Haml
 
-We use HAML at The Frontier Group, ERB is only acceptable for mailers, plain text and non-HTML rendering.
+We use Haml at The Frontier Group, ERB is only acceptable for mailers, plain text and non-HTML rendering.
+
+## Table of Contents
+
+* [Syntax](#syntax)
+* [Haml Initializer](#haml-initializer)
+  * [Adding the initializer to your project](#adding-the-initializer-to-your-project)
+* [The `<html>` tag](#the-html-tag)
+* [Meta rules](#meta-rules)
+* [Modernizr](#modernizr)
+* [Semantics](#semantics)
+  * [Use HTML according to its purpose](#use-html-according-to-its-purpose)
+  * [Provide alternative contents for images](#provide-alternative-contents-for-images)
+    * [Image titles](#image-titles)
+  * [Use meaningful or generic ID and Class names](#use-meaningful-or-generic-id-and-class-names)
 
 ## Syntax
 
@@ -8,12 +22,13 @@ We use HAML at The Frontier Group, ERB is only acceptable for mailers, plain tex
 * Use Ruby 1.9 hash syntax for attributes
 * Use curly braces for attributes
 * Use only lowercase code
-* Use HAML (`-#`) instead of HTML (`/`) comments (exception for conditional comments like below)
+* Use Haml (`-#`) instead of HTML (`/`) comments (exception for conditional comments see below)
 * Use Rails TagHelpers like `image_tag` instead of `%img`
+* Use multiline declarations when calling Ruby methods, declaring data structures or adding lots of HTML attributes. As long as each line but the last ends with a comma. See [Haml docs about Inserting Ruby](http://haml.info/docs/yardoc/file.REFERENCE.html#inserting_ruby_).
 
-## HAML Initializer
+## Haml Initializer
 
-To get more control over HTML doctypes, the default HAML format needs to be set to `:xhtml`.
+To get more control over HTML doctypes, the default Haml format needs to be set to `:xhtml`.
 This allows us to use the XHTML 1.0 Transitional doctype for email layouts and HTML5 for everything else.
 
 **Meaning:**
@@ -29,26 +44,24 @@ Haml::Template.options[:format] = :xhtml
 ```
 
 **Related links:**
-* About `doctype` in the [HAML Docs](http://haml.info/docs/yardoc/file.REFERENCE.html#doctype_)
+* About `doctype` in the [Haml Docs](http://haml.info/docs/yardoc/file.REFERENCE.html#doctype_)
 * Article ["Correct doctype to use in HTML Emails"](https://www.campaignmonitor.com/blog/post/3317/correct-doctype-to-use-in-html-email/) by Campaign Monitor
 
 ## The `<html>` tag
 
 ```haml
 !!! 5
-/[if IE 8]<html class="no-js lt-ie9" lang="en">
-/[if IE 9]<html class="no-js lt-ie10" lang="en">
-/[if lt IE 10]<html class="no-js lt-ie10" lang="en-us">
+/[if lt IE 10]<html class="no-js lt-ie10" lang="en">
 <!--[if !IE]><!-->
 %html.no-js{lang: "en"}<>
   <!--<![endif]-->
 ```
 
-Unfortunately for us, IE is still relevant and we should always be using this `<html>` setup for **all** sites and apps (exception: admin/backend areas).
+Unfortunately for us, IE is still relevant and we should be using those conditional HTML comments for **all** sites and apps (exception: admin/backend areas).
 
 ## Meta rules
 
-Make sure to specify the encoding in the HTML templates and documents right before adding any other tags after opening the `head` element.
+Make sure to specify the encoding in the HTML templates and documents right before adding any other tags and after opening the `head` element.
 
 ```haml
 %head
@@ -58,28 +71,45 @@ Make sure to specify the encoding in the HTML templates and documents right befo
 
 ## Modernizr
 
-[Modernizr](http://modernizr.com/) needs to be included in the `<head>` of **every** app. Not so much for the feature sniffing (though we obviously should be using it) but for html5shiv. Many of our apps will be completely broken in IE8 and under without it.
+When using Modernizr, be sure to [**custom build**](http://modernizr.com/download/) it per application and un-check unnecessary tests and the html5shiv. We should only be seeing a handful of (necessary) tests in any given app.
 
-When using Modernizr, be sure to [**custom build**](http://modernizr.com/download/) per application and un-check unnecessary tests. We should only be seeing a handful of tests on any given app.
+In case html5shiv is required for older versions of IE, don't add it to Modernizr. Use a conditional comment and load it from a CDN:
+
+```haml
+/[if lte IE 8]
+  = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"
+```
+
+**Note:** The same applies to [Respond.js](https://github.com/scottjehl/Respond) if required.
+
+Loading fallback scripts from a CDN for older IE versions could be beneficial as it may have been cached by the browser before.
 
 ## Semantics
 
 ### Use HTML according to its purpose.
 
-Use elements for what they have been created for. For example, use heading elements for headings, `p` elements for paragraphs, `a` elements for anchors, etc.
+Use elements for their intended purpose only. For example, use heading elements for headings, `p` elements for paragraphs, `a` elements for anchors, etc. See [HTML element reference on MDN](https://developer.mozilla.org/en/docs/Web/HTML/Element) for a detailed list of available elements.
 
-### Provide alternative contents for images
+One exception is the `<i>` element. We typically use `i` to display icons. This way we have full control over a pseudo "icon element" and can attach multiple classes and other HTML attributes to it if necessary.
 
-Providing alternative contents is important for accessibility reasons: a blind user has few cues to tell what an image is about without `alt` attribute.
+Example: `%i.ico.ico-large.ico-user{aria: {hidden: "true"}}`.
 
-For images whose `alt` attributes would introduce redundancy, and for images whose purpose is purely decorative which you cannot immediately use CSS for, use no alternative text, as in `alt=""`.
+**Note:** With the addition of the `aria-hidden` attribute, we hide this element and its content from assistive technology (ie. screenreaders).
+
+### Provide alternative content for images
+
+Providing alternative content is important for accessibility reasons: a visually impaired user has limited cues to tell what an image is about without `alt` attribute.
+
+For images whose `alt` attributes would introduce redundancy, and for images whose purpose is purely decorative (which you cannot immediately use CSS for), use no alternative text, as in `alt=""`.
+
+Need help deciding what to do? Have a look at the [alt Decision Tree](https://www.w3.org/WAI/tutorials/images/decision-tree/).
 
 #### Image titles
 
 Don't use the `title` attribute to repeat the content of the `alt` attribute. This can be considered "keyword stuffing" by search engines and could be penalised in terms of the website's ranking in search results.
-In most cases, if an `alt` attribute has been provided there is no need for a `title` attribute. A potential use is to provide additional information for an image, like maybe a date or other information that is likely not essential.
+In most cases, if an `alt` attribute has been provided there is no need for a `title` attribute. A potential use is to provide additional information for an image, ie. a date or other information that is likely not essential.
 
-### Use meaningful or generic ID and class names.
+### Use meaningful or generic ID and Class names.
 
 Instead of presentational or cryptic names, always use ID and class names that reflect the purpose of the element in question, or that are otherwise generic.
 
