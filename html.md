@@ -88,17 +88,17 @@ Loading fallback scripts from a CDN for older IE versions could be beneficial as
 
 ### Use HTML according to its purpose.
 
-Use elements for what they have been created for. For example, use heading elements for headings, `p` elements for paragraphs, `a` elements for anchors, etc. See [HTML element reference on MDN](https://developer.mozilla.org/en/docs/Web/HTML/Element) for a detailed list of available elements.
+Use elements for their intended purpose only. For example, use heading elements for headings, `p` elements for paragraphs, `a` elements for anchors, etc. See [HTML element reference on MDN](https://developer.mozilla.org/en/docs/Web/HTML/Element) for a detailed list of available elements.
 
-An exemption is the `<i>` element. We typically use `i` to display icons. This way we have full control over a pseudo "icon element" and can attach multiple classes and other HTML attributes to it if necessary.
+One exception is the `<i>` element. We typically use `i` to display icons. This way we have full control over a pseudo "icon element" and can attach multiple classes and other HTML attributes to it if necessary.
 
 Example: `%i.ico.ico-large.ico-user{aria: {hidden: "true"}}`.
 
 **Note:** With the addition of the `aria-hidden` attribute, we hide this element and its content from assistive technology (ie. screenreaders).
 
-### Provide alternative contents for images
+### Provide alternative content for images
 
-Providing alternative contents is important for accessibility reasons: a visually impaired user has limited cues to tell what an image is about without `alt` attribute.
+Providing alternative content is important for accessibility reasons: a visually impaired user has limited cues to tell what an image is about without `alt` attribute.
 
 For images whose `alt` attributes would introduce redundancy, and for images whose purpose is purely decorative (which you cannot immediately use CSS for), use no alternative text, as in `alt=""`.
 
