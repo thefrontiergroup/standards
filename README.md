@@ -1,6 +1,7 @@
 # Standards
 
-The standards to which code produced by The Frontier Group complies. Plus use pull requests to propose changes and additions to the standards documents.
+The standards to which code produced by [The Frontier Group](http://www.thefrontiergroup.com.au) complies.
+Please use pull requests to propose changes and additions to the Standards documents.
 
 ## Table of Contents
 
