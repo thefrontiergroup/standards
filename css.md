@@ -304,7 +304,7 @@ Over time we have started using [Normalize.css](https://github.com/necolas/norma
   @media only screen and (-webkit-min-device-pixel-ratio: $ratio), only screen and (min--moz-device-pixel-ratio: $ratio), only screen and (min-device-pixel-ratio: $ratio)
     @content
 
-// display retina images/spritesheets
+// Display retina images/spritesheets
 =retinafy($filename, $inline: false)
   background-image: image-url($filename)
   @if $inline
@@ -316,16 +316,23 @@ Over time we have started using [Normalize.css](https://github.com/necolas/norma
   @media #{$features}
     @content
 
-// hide something from view but not from screenreaders
-=visually-hidden
-  border: 0
-  clip: rect(0 0 0 0)
-  height: 1px
-  margin: -1px
-  overflow: hidden
-  padding: 0
-  position: absolute
-  width: 1px
+// Simple, time-saving helper
+=size($width, $height: $width)
+  height: $height
+  width: $width
+
+// Hide something from view but not from screenreaders
+=visually-hidden($extend: true)
+  @if $extend
+    @extend %visually-hidden
+  @else
+    +size(1px)
+    border: 0
+    clip: rect(0 0 0 0)
+    margin: -1px
+    overflow: hidden
+    padding: 0
+    position: absolute
 
 // Form input placeholders
 =placeholder
@@ -354,8 +361,8 @@ Over time we have started using [Normalize.css](https://github.com/necolas/norma
   margin: 0
   padding: 0
 
-%screen-reader
-  +visually-hidden
+%visually-hidden
+  +visually-hidden($extend: false)
 
 %clearfix
   &:after
