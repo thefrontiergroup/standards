@@ -6,8 +6,8 @@ We use Haml at The Frontier Group, ERB is only acceptable for mailers, plain tex
 
 * [Syntax](#syntax)
 * [Haml Initializer](#haml-initializer)
-    * [Adding the initializer to your project](#adding-the-initializer-to-your-project)
-* [The HTML Tag](#the-html-tag)
+  * [Adding the initializer to your project](#adding-the-initializer-to-your-project)
+* [The `<html>` tag](#the-html-tag)
 * [Meta rules](#meta-rules)
 * [Modernizr](#modernizr)
 * [Semantics](#semantics)
