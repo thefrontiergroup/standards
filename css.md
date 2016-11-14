@@ -318,6 +318,7 @@ Over time we have started using [Normalize.css](https://github.com/necolas/norma
   overflow: hidden
   padding: 0
   position: absolute
+  white-space: nowrap
   width: 1px
 
 // Form input placeholders
